@@ -1,0 +1,63 @@
+$SecundaryColor:#9b9b9b;
+$HoverColor:#fdbb03;
+$PrimaryColor:#ff5e00;
+
+
+.container-mostrarInfo-buscar{
+    border: 2px solid $SecundaryColor  ;
+ 
+    padding: 10px;
+max-width: 1450px; 
+margin: auto;
+    margin-top: 30px;
+}
+
+
+.container-info-buscar{
+    display: grid;
+    grid-template-rows: auto auto 70px 70px;
+    grid-template-columns: repeat(4,minmax(125px,1fr));
+}
+
+
+
+.fechaBuscar{
+    width: 40%;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width:670px) and (max-width:767px) {
+.fechaBuscar{
+    width: 35%;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width:260px) and (max-width:670px) {
+.container-info-buscar{
+    display: grid;
+    grid-template-rows: auto auto 70px 70px 70px 80px ;
+    grid-template-columns: repeat(2,minmax(125px,1fr));
+  
+}
+
+}

@@ -1,0 +1,258 @@
+
+$SecundaryColor:#9b9b9b;
+$HoverColor:#fdbb03;
+$PrimaryColor:#ff5e00;
+
+.navBar1{
+    // background-color: rgb(235, 229, 229);
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    
+}
+
+
+
+@font-face {
+    font-family: "navbar_font1";
+          src: url("/nevis.ttf") format("truetype");
+
+}
+
+
+@mixin navbar_text{
+    font-size: 1.1em;
+    font-family:'navbar_font1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    color: $SecundaryColor;
+    transition: all 0.15s ;
+    // background-color: #d88;
+}
+
+// ----------------------------------------------------------
+@mixin navbar_text_hover{
+    color: $HoverColor;
+    
+}
+@mixin navbar_text_active{
+    color: $PrimaryColor;
+    
+}
+// --------------------------------------------------------------
+.home1{
+    @include navbar_text;
+}
+
+.flyers1{
+    @include navbar_text;
+}
+
+.tarjetas1{
+    @include navbar_text;
+}
+
+.etiquetas1{
+    @include navbar_text;
+}
+
+.etiquetas_adesivas1{
+    @include navbar_text;
+}
+.afiches1{
+    @include navbar_text;
+}
+
+// ------------------------
+.home1:hover{
+    @include navbar_text_hover;
+}
+
+.flyers1:hover{
+    @include navbar_text_hover;
+}
+
+.tarjetas1:hover{
+    @include navbar_text_hover;
+}
+
+.etiquetas1:hover{
+    @include navbar_text_hover;
+}
+
+.etiquetas_adesivas1:hover{
+    @include navbar_text_hover;
+}
+
+.afiches1:hover{
+    @include navbar_text_hover;
+}
+// ------------------------
+.home1:active{
+    @include navbar_text_active;
+}
+
+.flyers1:active{
+    @include navbar_text_active;
+}
+
+.tarjetas1:active{ 
+    @include navbar_text_active; 
+}
+
+.etiquetas1:active{ 
+    @include navbar_text_active;
+}
+
+.etiquetas_adesivas1:active{
+    @include navbar_text_active;
+}
+
+.afiches1:active{
+    @include navbar_text_active;
+}
+
+
+.nav-text {
+  
+ 
+
+  &.active {
+    color: $PrimaryColor;
+    text-decoration-line:underline ;
+   
+    border-radius: 5px;
+  }
+}
+// ----butons----
+.btn-move{
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    font-size: 0.55em;
+background-color: $PrimaryColor;
+clip-path: polygon(0 0, 0% 100%, 100% 0);
+}
+.btn-move:hover{
+   cursor: move;
+background-color: $SecundaryColor;
+
+}
+.container-btn {
+    display: flex;
+// background-color: #d88;
+    position: fixed;
+ right: 20px;
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+      z-index: 300;
+}
+.pos1{
+bottom: 20px;
+
+}
+.pos2{
+// bottom: 100px;
+bottom: 82vh;
+
+}
+.container-btn:hover{
+ 
+    opacity: 1;
+}
+.btn-Buscar{
+    width:150px ;  
+    height:60px ;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.2em;
+   
+    margin-right: 1px;
+    border-radius: 20px 0px 0px 20px;
+    transition: all 0.2s;
+    background-color: #ffdab0;
+    margin-left: -8px;
+}
+
+.btn-Agregar_Trabajo{
+    width:150px ;  
+    height:60px ;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.2em;
+    border-radius: 0px 20px 20px 0px;
+    transition: all 0.2s;
+    background-color: #eaffb2;
+
+}
+
+.btn-Buscar:hover{
+    transform:scale( 1.1);
+    cursor: pointer;
+    background-color: $PrimaryColor;
+    box-shadow: 5px 5px 5px $SecundaryColor;
+}
+
+.btn-Agregar_Trabajo:hover{
+     transform:scale( 1.1);
+     cursor: pointer;
+    background-color: #b5f504;
+    box-shadow: 5px 5px 5px $SecundaryColor;
+}
+.btn-Buscar:active{
+    transform:scale( 1.2);
+    cursor: pointer;
+    background-color: #b43a01;
+}
+
+.btn-Agregar_Trabajo:active{
+     transform:scale( 1.2);
+     cursor: pointer;
+    background-color: #7daa01;
+}
+
+@media screen and (min-width:260px) and (max-width:630px) {
+    .navBar1{
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.btn-Buscar{
+       width:75px ;  
+    height:40px ;
+    font-size: 1em;
+        border-radius: 5px;
+margin-bottom: 2px;
+margin-left: 0px;
+margin-top: -5px;
+}
+.btn-Agregar_Trabajo{
+       width:75px ;  
+    height:42px ;
+    font-size: 1em;
+    border-radius: 5px;
+
+}
+.container-btn{
+    display: flex;
+    flex-direction: column;
+    bottom: 180px;
+    height: 100px;
+    // background-color: #d88;
+    position: fixed;
+}
+
+
+
+
+.pos1{
+bottom: 30px;
+
+}
+.pos2{
+// bottom: 100px;
+bottom: 80vh;
+
+}
+
+
+
+
+
+}

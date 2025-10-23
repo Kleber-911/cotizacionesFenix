@@ -1,0 +1,29 @@
+.containerPapel{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    // background-color: #d88;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.modalPapelInput{
+    width: 45%;
+    height: 32px;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
+
+
+.containerModalMaterial{
+    height: 300px;
+}
+
+
+.parrafo_gramaje{
+    margin: 0;
+    font-size: 0.8em;
+    margin-left: 15px;
+    color: red;
+}

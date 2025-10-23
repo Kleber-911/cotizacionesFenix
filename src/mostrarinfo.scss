@@ -1,0 +1,340 @@
+$SecundaryColor:#9b9b9b;
+$HoverColor:#fdbb03;
+$PrimaryColor:#ff5e00;
+
+@font-face {
+    font-family: "nevis1";
+      src: url("/nevis.ttf") format("truetype");
+
+}
+
+.container-mostrarInfo{
+    border: 2px solid $SecundaryColor  ;
+ 
+    padding: 10px;
+max-width: 1450px; 
+margin: auto;
+    margin-top: 20px;
+}
+
+
+.line1{
+    border: 1px solid $SecundaryColor  ;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.mostrarInfo_title{
+    color: $PrimaryColor;
+    margin: 0px;
+    text-align: center;
+   font-family: nevis1;
+    font-size: 1.2em;
+}
+
+.subtituloH4{
+    color: $PrimaryColor;
+   font-family: Arial, Helvetica, sans-serif;
+margin: 0px;
+}
+
+.container-info{
+    display: grid;
+    grid-template-rows: auto auto 70px 70px 155px 330px;
+    grid-template-columns: repeat(4,minmax(125px,1fr));
+    // background-color: #d88;
+}
+
+
+.containerCampo{
+    padding: 10px;
+}
+.containerCampo p{
+    margin: 0px;
+    font-size: 1.2em;
+   font-family: Arial, Helvetica, sans-serif;
+ 
+}
+
+
+.containerCampo_cliente{
+    
+    grid-area: 1/ 1/2/-1;
+    display: flex;
+
+}
+.containerCampo_cliente h4{
+    display: inline-block;
+    margin-top: -7px;
+    // background-color: #d88;
+}
+.containerCampo_cliente p{
+    display: inline-block;
+    margin: 0;
+    // background-color: #d88;
+    margin-left: 10px;
+// background-color: #d88;
+line-height: 15px;
+}
+
+
+.containerCampo_keywords{ 
+       grid-area: 2/ 1/3/-1;
+
+
+}
+.containerCampo_keywords h4{
+    display: inline-block;
+    margin-top: -7px;
+    // background-color: #d88;
+}
+.containerCampo_keywords p{
+    display: inline-block;
+    margin-left: 10px;
+    // background-color: #d88;
+    line-height: 15px;
+}
+
+
+
+
+.containerCampo_trabajo{
+
+}
+.containerCampo_cantidad{
+
+}
+.containerCampo_tamano{
+
+}
+.containerCampo_fecha{
+
+}
+.containerCampo_papel{
+
+}
+.containerCampo_pvp{
+
+}
+.containerCampo_estado{
+
+}
+
+
+.containerCampo_observaciones{
+  
+    grid-area: 5/ 1/6/-1;
+    border: 2px solid $SecundaryColor;
+    border-radius: 8px;
+    height: 110px;
+
+}
+
+.containerCampo_observaciones textarea{
+  box-sizing: border-box;
+   background-color: rgba(243, 241, 241, 0.829);
+   width: 100%;
+   height: 80px;
+   margin-left: auto;
+   resize: none;
+   font-size: 1.2em;
+   padding: 5px;
+
+}
+
+
+.containerCampo_costos{
+    grid-area: 6/ 1/7/3;
+        border: 2px solid $SecundaryColor;
+    border-radius: 8px;
+    height: 91%;
+    width: 350px;
+    margin: auto;
+    margin-top: 5px;
+}
+.containerCampo_costos .subtituloH4{
+text-align: center;
+
+margin-top: -5px;
+}
+.containerCampo_foto{
+    grid-area: 6/ 3/7/5;
+    border: 2px solid $SecundaryColor;
+    border-radius: 8px;
+    height: 91%;
+    width: 350px;
+    margin: auto;
+    margin-top: 5px;
+
+    // background-color: #552b2b;
+}
+.containerCampo_foto .subtituloH4{
+text-align: center;
+
+margin-top: -5px;
+}
+
+
+
+.btn_editar{
+    background-color: $PrimaryColor;
+    margin-top: 18px;
+    width: 100px;  
+    height:40px ;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s;
+}
+.btn_duplicar{
+    background-color: $PrimaryColor;
+    margin-top: 18px;
+    width: 100px;  
+    height:40px ;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s;
+
+}
+
+.btn_editar:hover{
+
+    transform: scale(1.2);
+    cursor: pointer;
+    background-color: $HoverColor;
+}
+.btn_duplicar:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    background-color: $HoverColor;
+
+
+}
+.btn_editar:active{
+
+  
+    background-color:#9b9b9b ;
+}
+.btn_duplicar:active{
+ 
+     background-color:#9b9b9b ;
+
+
+}
+
+.bolita{
+    
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    border-radius: 10px;
+ 
+margin-right: 5px;
+}
+
+
+.bol_amar{
+ background-color: rgb(255, 230, 3);
+}
+.bol_verd{
+ background-color: rgb(0, 179, 24);
+}
+.cliente_span{
+    color:$SecundaryColor;
+
+
+
+
+
+
+
+
+
+// mediasqueris----------------------------------------------------
+
+}
+@media screen and (min-width:671px) and (max-width:824px) {
+
+.containerCampo_costos{
+
+    width: 90%;
+ 
+}
+.containerCampo_foto{
+
+    width: 90%;;
+ 
+
+    // background-color: #552b2b;
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+@media screen and (min-width:260px) and (max-width:670px) {
+.container-info{
+    display: grid;
+    grid-template-rows: auto auto 70px 70px 70px 78px 180px 300px 300px;
+    grid-template-columns: repeat(2,minmax(125px,1fr));
+}
+
+.containerCampo_cliente{
+    
+    grid-area: 1/ 1/2/-1;
+    display: flex;
+
+}
+
+.containerCampo_keywords{ 
+       grid-area: 2/ 1/3/-1;
+// background-color: #d88;
+
+}
+
+
+
+
+
+.containerCampo_observaciones{
+  
+    grid-area: 7/ 1/8/-1;
+    height: 135px;
+}
+.containerCampo_costos{
+    grid-area: 8/ 1/9/3;
+    width: 85%;
+    height: 90%;
+margin-bottom: 15px;
+}
+.containerCampo_foto{
+    grid-area: 9/ 1/10/3;
+    width: 85%;
+
+}
+
+
+.containerCampo_observaciones textarea{
+ 
+   height: 110px;
+
+
+}
+
+
+
+
+
+}

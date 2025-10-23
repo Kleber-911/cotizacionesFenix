@@ -1,0 +1,30 @@
+$PrimaryColor:#ff5e00;
+
+
+
+.h1_Title{
+    font-family: Title1;
+    // background-color: #d88;
+    margin: 0;
+    margin-top: 10px;
+    text-align: center; 
+    color: $PrimaryColor;
+    font-size: 2.2em;
+    margin-bottom: 0px;
+}
+
+
+.h4_Title{
+  font-family: Title1;
+    // background-color: #d88;
+    margin: 0;
+    text-align: center;
+    color: $PrimaryColor;
+    font-size: 1.4em;
+margin-top: -5px;
+}
+
+@font-face {
+    font-family: 'Title1';
+      src: url("/nasalization-rg.ttf") format("truetype");
+}

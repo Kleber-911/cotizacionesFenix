@@ -1,0 +1,203 @@
+$SecundaryColor:#9b9b9b;
+$HoverColor:#fdbb03;
+$PrimaryColor:#ff5e00;
+
+
+.containerModalClientes{
+     width: 100vw;
+    height:  100vh;
+    background-color: rgba(136, 136, 136, 0.822);
+  position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.styleModalClientes{
+    width: 550px;
+    height:  300px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 2px solid $PrimaryColor;
+    border-radius: 5px;
+    padding: 5px;
+
+    
+}
+
+.containerFlex{
+    // background-color: #d88;
+    display: flex;
+    flex-direction: column;
+    // align-content: flex-start;
+    align-items: flex-start;
+    // justify-content: flex-end;
+}
+
+
+.modalTrabajosInput{
+    height: 25px;
+    width: 95%;
+    
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.modalTrabajosh2{
+    display: inline;
+    color: $PrimaryColor;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+
+
+.btn_GuardarNuevoCliente{
+    width: 170px;
+    display: inline;
+    background-color: #cecece;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: $PrimaryColor;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.2s;
+    border-radius:6px ;
+}
+.btn_GuardarNuevoCliente:hover{
+    cursor: pointer;
+    background-color: rgb(255, 248, 147);
+    transform: scale(1.07);
+}
+.btn_GuardarNuevoCliente:active{
+    cursor: pointer;
+    background-color: rgb(25, 241, 6);
+    transform: scale(1.07);
+}
+
+
+
+
+
+
+.btn_GuardarNuevoCliente[disabled]{
+    opacity: 0.5;
+}
+.btn_GuardarNuevoCliente[disabled]:hover{
+    
+    background-color: #cecece;
+    color: $PrimaryColor;
+    cursor: default;
+    transform: scale(1);
+
+
+}
+.btn_GuardarNuevoCliente[disabled]:active{
+        background-color: #cecece;
+    color: $PrimaryColor;
+    transform: scale(1);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn_close{
+    font-size: 1.3em;
+    width: 25px;  
+    height: 25px;
+    background-color: $SecundaryColor;
+    line-height: 0px;
+    position: absolute;
+    right: 0;
+    top:0;
+}
+.btn_close:hover{
+    cursor: pointer;
+    background-color: rgb(223, 220, 220);
+}
+
+
+
+.selectAllClientes{
+
+    width: 300px;
+    // margin-left: auto;
+    height: 225px;
+    // margin-left: 100px;
+    margin-top: -15px;
+    align-self: center;
+      outline: none;            /* quita el borde azul por defecto */
+  border: 2px solid $HoverColor; /* borde naranja */
+  background-color: #fff3e0; /* fondo naranja claro opcional */
+  border-radius: 5px;
+}
+.selectAllClientes>option{
+ 
+   font-size: 1.1em;
+}
+.selectAllClientes>option:hover{
+   cursor: pointer;
+   background-color: $HoverColor;
+   font-size: 1.1em;
+}
+.selectAllClientes option:checked{
+  background-color: $PrimaryColor ;
+//    font-size: 1.3em;
+}
+
+
+
+.selectAllClientes:focus {
+  outline: none;            /* quita el borde azul por defecto */
+  border: 2px solid orange; /* borde naranja */
+  background-color: #fff3e0; /* fondo naranja claro opcional */
+}
+
+
+
+
+
+@media screen and (min-width:200px) and (max-width:670px) {
+
+.styleModalTrabajos{
+    width: 80%;
+    height:  300px;
+
+}
+
+.modalTrabajosInput{
+    height: 25px;
+    width: 95%;
+    
+    margin-left: 00px;
+    
+}
+
+
+}

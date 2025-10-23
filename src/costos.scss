@@ -1,0 +1,197 @@
+$SecundaryColor2:#5a514b;
+$HoverColor:#fdbb03;
+$PrimaryColor:#ff5e00;
+
+
+
+.container_costos{
+    width: 95%;
+    height: 95%;
+// background-color: #d88;
+margin: auto;
+overflow: auto;
+margin-bottom: 5px;
+margin-top: -2px;
+}
+
+
+.costos_item{
+    // background-color: rgb(255, 238, 206);
+    display: flex; 
+    margin: 4px; 
+    justify-content: space-around; 
+    align-items: center; 
+  // padding: 2px;
+
+}
+
+
+
+
+.costos_item p{ 
+    // background-color: rgb(118, 241, 107); 
+flex-basis:160px ; 
+  white-space: nowrap;
+overflow: hidden; 
+  text-overflow: ellipsis; 
+color: $SecundaryColor2; 
+// background-color: rgb(233, 43, 43); 
+height: 20px;
+// margin: auto;
+}
+.costos_item input{
+flex-basis:80px ;
+width: 40%; 
+overflow: hidden;
+  text-overflow: ellipsis;
+font-size: 1.12em;
+border-radius: 5px;
+  //  margin-left: auto;
+
+}
+.costos_item span{
+flex-basis:12px ;
+width: 40%; 
+font-size: 1.1em;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+color: rgb(103, 170, 2);
+  //  margin-left: auto;
+
+// background-color: #d88;
+}
+
+.containerCostosInput{
+  display: flex;
+  background-color: rgb(255, 218, 11);
+  justify-content: space-evenly;
+}
+
+.input_CostosInput{
+  width:  220px;
+  height: 22px;
+  font-size: 1.2em;
+}
+
+.line{
+  border: 1.5px solid $PrimaryColor;
+}
+
+.btn_checkInput:hover{
+   background-color: rgb(253, 244, 205);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn_checkInputPin:hover{
+   background-color: rgb(253, 244, 205);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn_checkInputPin:active{
+   background-color: $PrimaryColor;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn_costos{
+  //  margin-left: auto;
+}
+.btn_costos:hover{
+  background-color: rgb(253, 244, 205);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.containerDatos{
+
+  width: 75px;
+  // background-color: rgb(204, 31, 31);
+display: flex;
+align-items: center;
+}
+
+.Mostrar_PSG{
+  font-size: 1.4em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+color: #ff5e00;
+}
+
+
+.Mostrar_PSG1{
+  margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.3em;
+width: 250px;
+}
+.box_ganancia{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+}
+
+
+
+
+.costos_item_PSG{
+      background-color: rgb(224, 245, 149);
+    display: flex; 
+    margin: 4px; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding-left:10px ;
+}
+
+.costos_item_ganancia{
+      background-color: rgb(224, 245, 149);
+
+}
+
+
+
+
+
+
+input::-webkit-calendar-picker-indicator {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+
+
+
+
+
+@media screen and (min-width:260px) and (max-width:670px) {
+
+.container_costos{
+    width: 100%;
+// background-color: #d88;
+margin: auto;
+}
+
+
+.costos_item{
+    // background-color: #d88;
+    display: flex;
+    margin: 4px;
+    justify-content: space-between;
+}
+.costos_item p{
+    // background-color: #d88;
+flex-basis:160px ;
+overflow: hidden;
+  text-overflow: ellipsis;
+ font-size: 0.9em;
+}
+.costos_item input{
+flex-basis:80px ;
+width: 40%; 
+overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+
+
+
+
+}
+
