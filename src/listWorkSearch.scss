@@ -44,7 +44,7 @@ padding-bottom: 0px ;
  
   margin: auto;
   border-radius: 5px;
-  margin-top: 4px;
+  margin-top: 0px;
 }
 
 
@@ -111,7 +111,9 @@ padding-bottom: 0px ;
 }
 
 
-
+.infoTrabajo1{
+  cursor: help;
+}
 
 
 
@@ -124,7 +126,7 @@ padding-bottom: 0px ;
     display: flex;
     width: 99%;
     margin: auto;
-
+align-items: center;
     justify-content: space-between;
    
   transition: all 0.1s;
@@ -179,7 +181,8 @@ box-shadow: 1px 0px 14px 3px rgba(255,94,0,0.72);
 @media screen and (min-width:671px) and (max-width:860px) {
 .circleInside{
  
-  margin-top: 4px;
+    margin-top: 0px;
+
 }
 .wl-encabezado,.wl-info{
   font-size: 0.7em;
@@ -195,7 +198,8 @@ box-shadow: 1px 0px 14px 3px rgba(255,94,0,0.72);
 @media screen and (min-width:260px) and (max-width:670px) {
 .circleInside{
  
-  margin-top: 6px;
+   margin-top: 0px;
+
 }
 .wl-encabezado,.wl-info{
   font-size: 0.9em;

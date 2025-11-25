@@ -9,7 +9,9 @@ export const MostrarInfo = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { datos } = location.state || {}; // 👈 datos del trabajo seleccionado
-
+  
+const [year, month, day] = datos.Fecha.split("-");
+const fechaLocal = new Date(year, month - 1, day);
   const openPhoto = () => setmodalFotoWindow(true);
 
   // 🔹 Obtener gastos específicos
@@ -50,12 +52,14 @@ export const MostrarInfo = () => {
 
   // 🔹 Funciones para redirigir según la acción
   const handleEditar = () => {
-    navigate(`/editar/${datos.PedidoID}`, { state: { datos } });
+    navigate(`/editar/${datos.PedidoID}`, { state: { datos, mode: "edit",costosEdit:allGastos } });
   };
 
   const handleDuplicar = () => {
-    navigate(`/duplicar/${datos.PedidoID}`, { state: { datos } });
+    navigate(`/duplicar/${datos.PedidoID}`, { state: { datos, mode: "duplicar" ,costosEdit:allGastos} });
   };
+
+
 
   const handleEliminar = async () => {
     const confirmar = window.confirm(`¿Seguro que deseas eliminar el trabajo "${datos.TrabajoNombre}"?`);
@@ -76,6 +80,20 @@ export const MostrarInfo = () => {
     }
   };
 
+
+
+
+
+
+function showUnit(){
+  let divUnit=datos.PVP/datos.Cantidad
+  let redondeado = Math.round(divUnit * 100) / 100; // 3.14
+  alert(`el costo unitario es: ` + redondeado )
+}
+
+
+
+
   return (
     <div className='container-mostrarInfo'>
       <h2 className='mostrarInfo_title'>INFORMACIÓN DETALLADA</h2>
@@ -84,12 +102,12 @@ export const MostrarInfo = () => {
       <div className='container-info'>
         <div className='containerCampo containerCampo_cliente'>
           <h4 className='subtituloH4'>CLIENTE:</h4>
-          <p>{datos.ClienteNombre} | <span className='cliente_span'>id={datos.ClienteID}</span></p>
+          <p>{datos.ClienteNombre} | <span className='cliente_span'>id_Cliente={datos.ClienteID}</span></p>
         </div>
 
         <div className='containerCampo containerCampo_keywords'>
           <h4 className='subtituloH4'>KEYWORDS:</h4>
-          <p>{datos.Keywords}</p>
+          <p>{datos.Keywords} | <span className='cliente_span'>id_Pedido={datos.PedidoID}</span></p>
         </div>
 
         <div className='containerCampo containerCampo_trabajo'>
@@ -110,11 +128,11 @@ export const MostrarInfo = () => {
         <div className='containerCampo containerCampo_fecha'>
           <h4 className='subtituloH4'>FECHA:</h4>
           <p>
-            {new Date(datos.Fecha).toLocaleDateString("es-ES", {
-              day: "2-digit",
-              month: "short",
-              year: "numeric",
-            })}
+            {fechaLocal.toLocaleDateString("es-ES", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+})}
           </p>
         </div>
 
@@ -125,7 +143,7 @@ export const MostrarInfo = () => {
 
         <div className='containerCampo containerCampo_pvp'>
           <h4 className='subtituloH4'>PVP:</h4>
-          <p>{datos.PVP} $</p>
+          <p onDoubleClick={showUnit}>{datos.PVP} $</p>
         </div>
 
         <div className='containerCampo containerCampo_estado'>

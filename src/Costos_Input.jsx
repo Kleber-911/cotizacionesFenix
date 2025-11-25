@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './costos.scss'
 
-export const Costos_Input = ({handleInfo,id,ref,tabIndex1,idwork1}) => {
+export const Costos_Input = ({handleInfo,id,ref,tabIndex1,idwork1,listaGastos}) => {
 
 
 const[textGastos,setTextGastos]=useState("")
@@ -27,18 +27,30 @@ handleInfo([textGastos,id])
 
 
 
+const[desabilitarBoton,setdesabilitarBoton]=useState(false)
+function ingresoGastos(e) {
+  let valor = e.target.value;
 
-function ingresoGastos(e){
-    let valor=e.target.value
-
-
-
+  // Capitaliza la primera letra
   if (valor.length > 0) {
     valor = valor.charAt(0).toUpperCase() + valor.slice(1);
   }
-setTextGastos(valor)
+  setTextGastos(valor);
 
+  // Obtiene todos los nombres actuales
+  const nombres = listaGastos.map(item => item.Nombre);
+
+  // Verifica si ya existe un gasto con ese nombre
+const existe = nombres.some(item => item.toLowerCase() === valor.toLowerCase());
+
+  // Si existe, deshabilita el botón
+  setdesabilitarBoton(existe);
+
+  // if (existe) {
+  //   console.log("⚠️ Gasto repetido, botón deshabilitado");
+  // }
 }
+
 
   useEffect(() => {
     if (ref.current) {
@@ -98,16 +110,22 @@ async function fijarEliminarCosto() {
 
   return (
     <div className='containerCostosInput'>
-        <input list="opciones" tabIndex={tabIndex1} ref={ref} onChange={ingresoGastos} value={textGastos} className='input_CostosInput'type="text" />
-        <button onClick={sendInfotoPadre} className='btn_checkInput'>✅</button>
+        <input list="opciones" tabIndex={tabIndex1} ref={ref} onChange={ingresoGastos} value={textGastos} className={desabilitarBoton?'input_CostosInput input_desabilitado':"input_CostosInput"}type="text" />
+        <button onClick={sendInfotoPadre} className='btn_checkInput' disabled={desabilitarBoton} >✅</button>
         <button  onClick={fijarEliminarCosto} title='Fijar / Eliminar permanentemente en este trabajo'  className='btn_checkInputPin'>📌</button>
       
         <datalist id="opciones">
+
+
   <option value="Transporte" />
-  <option value="Trabajo" />
-  <option value="Tractor" />
-  <option value="Tránsito" />
-</datalist>
+  <option value="Redondeado" />
+  <option value="Laminado" />
+  <option value="UV" />
+
+
+
+
+        </datalist>
     </div>
   )
 }

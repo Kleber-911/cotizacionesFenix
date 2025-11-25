@@ -338,3 +338,52 @@ margin-bottom: 15px;
 
 
 }
+
+
+@media print {
+  /* Ocultar elementos que no deben imprimirse */
+.containerCampo_costos{
+   
+    width: 89%;
+    height: 90%;
+margin-bottom: 15px;
+}
+.containerCampo_foto{
+   
+    width: 89%;
+
+}
+
+
+
+.btn_editar{
+    display: none;
+}
+.btn_duplicar{
+    display: none;
+    
+
+}
+
+
+
+
+.container-info{
+   
+    grid-template-rows: auto auto 70px 70px 270px 330px;
+    
+   
+}
+
+.containerCampo_observaciones{
+  
+    height: 83%;
+}
+
+.containerCampo_observaciones textarea{
+ 
+   height: 88%;
+  
+
+}
+}

@@ -3,13 +3,15 @@ import React, { useState } from 'react'
 import './costos.scss'
 
 
-export const Costos_Hijo = ({visual,id,handleDolares,handleId,ttabindex}) => {
+export const Costos_Hijo = ({visual,id,handleDolares,handleId,ttabindex,valordinero}) => {
+
+if (valordinero === undefined) {
+  valordinero = "";
+}
 
 
 
-
-
-const[valorGasto,setvalorGasto]=useState("")
+const[valorGasto,setvalorGasto]=useState(valordinero)
 
 
   function escribir(e) {

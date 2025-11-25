@@ -160,6 +160,7 @@ const saveMaterial=async(med)=>{
 
 function ponerMaterial(e){
   let valor1 = e.target.value;
+    
 setmaterialElegido(valor1)
 }
 function ponerGramaje(e){
@@ -174,6 +175,7 @@ function onInputMaterial(e){
   // Si no está vacío → primera letra en mayúscula
   if (value1.length > 0) {
     value1 = value1.charAt(0).toUpperCase() + value1.slice(1);
+    value1 = value1.replace(/ /g, "_");
   }
 setmaterialElegido(value1)
 

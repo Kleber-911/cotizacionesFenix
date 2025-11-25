@@ -43,26 +43,6 @@ console.log(valorPvp)
 
 
 
-    //  let tempValue = e.target.value;
-
-    // // Cambiar comas a puntos
-    // tempValue = tempValue.replace(/,/g, ".");
-
-    // // Eliminar caracteres no numéricos excepto punto
-    // tempValue = tempValue.replace(/[^0-9.]/g, "");
-
-    // // Asegurar solo un punto decimal
-    // const partes = tempValue.split(".");
-    // if (partes.length > 2) {
-    //   tempValue = partes[0] + "." + partes.slice(1).join("");
-    // }
-
-    // // Limitar a 2 decimales
-    // if (partes[1]) {
-    //   partes[1] = partes[1].slice(0, 2);
-    //   tempValue = partes.join(".");
-    // }
-
 
 
 

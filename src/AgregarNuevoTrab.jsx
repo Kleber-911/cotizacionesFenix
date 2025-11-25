@@ -5,8 +5,16 @@ import { ModalTrabajos } from './ventanasModales/ModalTrabajos'
 import { ModalClientes } from './ventanasModales/ModalClientes'
 import { ModalPapel } from './ventanasModales/ModalPapel'
 import { ModalTamanos } from './ventanasModales/ModalTamanos'
+import { useLocation, useNavigate  } from "react-router-dom";
 
 export const AgregarNuevoTrab = () => {
+ const navigate = useNavigate();
+const location = useLocation();
+
+const { state } = location || {};
+const datosArriba = state?.datos;
+const mode = state?.mode || "create";
+const costosEdit = state?.costosEdit || [];
 
 const[optionTrabajos,setOptionTrabajos]=useState([])
 //ventanas modales
@@ -17,6 +25,19 @@ const [modalpapel1, setmodalPapel1] = useState(false);
 // const [modalNewCosto, setmodalNewCosto] = useState(false);
   const inputRef = useRef(null);
 const[elevarTamano,setElevarTamano]=useState("")
+
+  
+
+const[finalTitle,setfinalTitle]=useState("")
+
+
+
+
+
+
+
+
+
 
 
 function ejecutarModalTrabajos(){
@@ -59,6 +80,16 @@ useEffect(() => {
     setOptionTrabajos(trabajos)
 })()
 
+if (mode=== "edit"){
+setfinalTitle("EDITANDO TRABAJO")
+}else if (mode ==="duplicar"){
+setfinalTitle("DUPLICANDO TRABAJO")
+
+
+}else {
+setfinalTitle("AGREGA NUEVO TRABAJO")
+
+}
 
 }, [])
 
@@ -195,6 +226,15 @@ setOptionTamano(TamanoYMaterial[1])
 
 
 function elegirTamano(e){
+
+
+// if (datosArriba && (mode === "edit" || mode === "duplicar")) {
+
+  setElevarTamano("")
+
+// }
+
+
   let valor = e.target.value;
 setEncerarAgregarTam(e.target.value)
   
@@ -211,6 +251,11 @@ setEncerarAgregarTam(e.target.value)
 
 
 function elegirPapel(e){
+  // if (datosArriba && (mode === "edit" || mode === "duplicar")) {
+
+  setElevarMaterial("")
+
+// }
   let valor = e.target.value;
 setEncerarAgregarPap(e.target.value)
   
@@ -298,11 +343,24 @@ const [estadoRadio, setEstadoRadio] = useState("cotizacion");
 
 
 const enviarDatos = async () => {
+
+
+
+
+
+
+if (mode === "create" || mode === "duplicar"){
+
+
   try {
     // 1️⃣ Subir imagen a Cloudinary primero
+ 
+
+
 let imageUrl
+console.log(fileToUpload)
 if (fileToUpload==""){
-imageUrl=""
+ imageUrl=""
 }else{
 
     const formData = new FormData();
@@ -323,6 +381,11 @@ console.log(imageUrl)
 
 
 }
+
+
+
+
+
 
 
     // 2️⃣ Preparar los datos del pedido con la URL incluida
@@ -364,7 +427,9 @@ console.log(imageUrl)
     const respuesta = await res.json();
 
     if (res.ok) {
-      alert("✅ Guardado con éxito");
+      alert("✅ PEDIDO Guardado con éxito con pedidoID="+respuesta.pedidoID);
+       navigate("/mostrartrabajo", { state: { datos:respuesta.resultadosActualizadosN[0]} });///
+
       console.log("Respuesta del backend:", respuesta);
     } else {
       alert("❌ Error al guardar los datos");
@@ -375,9 +440,166 @@ console.log(imageUrl)
   }
 
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+}else if(mode==="edit"){
+
+console.log(datosArriba.PedidoID)
+console.log(elevarTamano)
+console.log(elevarMaterial)
+
+  try {
+    // 1️⃣ Subir imagen a Cloudinary primero
+
+
+
+// console.log(fileToUpload)
+let nuevaUrl = datosArriba.Foto || ""; // si ya había imagen, úsala como base
+console.log(fileToUpload)
+if (fileToUpload && fileToUpload !== "") {
+  const actualizarImagen = async (fileToUpload, fotoAntigua) => {
+    console.log(fotoAntigua);
+    try {
+      const formData = new FormData();
+      formData.append("image", fileToUpload);
+
+      // Si ya hay una imagen anterior (datos.Foto), la enviamos para reemplazarla
+      if (fotoAntigua) {
+        formData.append("fotoAntigua", fotoAntigua);
+      }
+
+      const cloudResponse = await fetch("http://localhost:3000/updatecloud", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!cloudResponse.ok) {
+        throw new Error("Error al actualizar imagen en Cloudinary");
+      }
+
+      const cloudData = await cloudResponse.json();
+      console.log("✅ Imagen actualizada o creada:", cloudData.imageUrl);
+      return cloudData.imageUrl;
+
+    } catch (error) {
+      console.error("❌ Error al actualizar imagen:", error);
+      return fotoAntigua || ""; // fallback
+    }
+  };
+
+  // 🔁 Aquí sí reasignamos la variable global, sin usar const
+  nuevaUrl = await actualizarImagen(fileToUpload, datosArriba.Foto);
+}
+
+
+
+
+
+
+    // 2️⃣ Preparar los datos del pedido con la URL incluida
+    let trabajoValido =
+      nuevoTrabajoCreado1.trim() !== ""
+        ? nuevoTrabajoCreado1.trim()
+        : encerarAgregarTrab.trim();
+
+
+let idmaterial=datosArriba.MaterialesID
+let idtamano=datosArriba.TamanoID
+
+
+
+
+
+    const datos = {
+      s_Cliente: textoInputCLIENTE.trim(),
+      s_Keywords: textoInputKEYWORDS.trim(),
+      s_Cantidad: textoInputCANTIDAD.trim(),
+      s_PVP: textoInputPVP,
+      s_Trabajo: trabajoValido,
+      s_Tamano:encerarAgregarTam,///,///
+      s_Material:encerarAgregarPap,////,////
+      s_Fecha: fechaHoy,
+      s_Colores: encerarElegirCol,
+      s_Estado: estadoRadio,
+      s_Observaciones: textoInputObservaciones,
+      s_SeCreoNuevoTam: seCreoNuevoTamano,
+      s_NuevoTamanoCreado: nuevoTamanoCreado1,
+      s_SeCreoNuevoMat: seCreoNuevoMaterial,
+      s_NuevoMaterialCreado: nuevoMaterialCreado1,
+      s_TablaGastos: elevarTablaFinalGod,
+      s_Foto: nuevaUrl,// 👈 incluimos la URL de Cloudinary
+      s_PSG:textoInputPSG
+    };
+
+    console.log("Datos a enviar:", datos);
+
+    // 3️⃣ Enviar todo al backend
+    console.log(datosArriba.PedidoID)
+    const res = await fetch(`http://localhost:3000/editarpedido/${datosArriba.PedidoID}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos),
+    });
+
+    const respuesta = await res.json();
+
+    if (res.ok) {
+      alert("✅ Guardado con éxito");
+       navigate("/mostrartrabajo", { state: { datos:respuesta.resultadosActualizados[0]} });
+    } else {
+      alert("❌ Error al guardar los datos");
+    }
+
+  } catch (error) {
+    console.error("Error en enviarDatos:", error);
+    alert("Ocurrió un error al guardar");
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 };
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -432,6 +654,82 @@ const[elevarMaterial,setElevarMaterial]=useState("")
 const[seCreoNuevoMaterial,setseCreoNuevoMaterial]=useState("No")
 const[nuevoMaterialCreado1,setnuevoMaterialCreado1]=useState("")
 const[nuevoTrabajoCreado1,setnuevoTrabajoCreado1]=useState("")
+// const[imgDesdeEdit,setimgDesdeEdit]=useState("")
+
+
+
+useEffect(() => {
+  console.log(datosArriba)
+  if (datosArriba && (mode === "edit" || mode === "duplicar")) {
+    setTextoInputCLIENTE(datosArriba.ClienteNombre || "");
+    setTextoInputKEYWORDS(datosArriba.Keywords || "");
+    setTextoInputCANTIDAD(datosArriba.Cantidad.toString() || "");
+    setTextoInputPVP(datosArriba.PVP || "");
+    setEncerarAgregarTrab(datosArriba.TrabajoNombre || "");
+    setElevarTamano(datosArriba.TamanoNombre+" "+ datosArriba.TamanoMedida|| "");
+    setElevarMaterial(datosArriba.MaterialNombre || "");
+    setEncerarAgregarTam(datosArriba.TamanoID)
+    setEncerarAgregarPap(datosArriba.MaterialesID)
+    setEncerarElegirCol(datosArriba.Colores || "");
+    setEstadoRadio(datosArriba.Estado || "cotizacion");
+    setTextoInpuObservaciones(datosArriba.Observaciones || "");
+    setTextoInputPSG(datosArriba.PSG || "");
+    setPreviewUrl(datosArriba.Foto || "");
+
+
+if ((mode === "edit" )) {
+
+setFechaHoy(datosArriba.Fecha || new Date());
+
+}else if(mode === "duplicar"){
+  
+  setFechaHoy(hoy);
+
+
+}
+
+
+    
+
+
+  let valor66 = datosArriba.TrabajoNombre;
+// setEncerarAgregarTrab(e.target.value)
+  
+
+  console.log("Elegiste:", valor66);
+  
+
+(async()=>{
+ const TamanoYMaterial =await getMaterialesTamanos(valor66)
+    const listGastos =await getGastos(valor66)
+
+setOptionMaterial(TamanoYMaterial[0])
+setOptionTamano(TamanoYMaterial[1])
+
+    console.log(TamanoYMaterial[0])
+    console.log(TamanoYMaterial[1])
+
+ setlistaGastos(listGastos)
+
+
+
+
+
+
+})()
+
+  }
+}, [datosArriba, mode]);
+
+
+
+
+
+
+
+
+
+
 
 
 function valorDeModalMaterial(pap1){
@@ -486,12 +784,35 @@ function fcnInputPVP(e){
 
 
  let valorPVP = e.target.value;
-valorPVP= e.target.value.replace(/\./g, ",").replace(/[^0-9.,]/g, "").replace(/(,.*),/g, "$1");
+// valorPVP= e.target.value.replace(/\./g, ",").replace(/[^0-9.,]/g, "").replace(/(,.*),/g, "$1");
 
 
+
+
+//-----------
+
+    // // let tempValue = e.target.value;
+
+    // // Cambiar comas a puntos
+    // valorPVP = valorPVP.replace(/,/g, ".");
+
+    // // Eliminar caracteres no numéricos excepto punto
+    // valorPVP = valorPVP.replace(/[^0-9.]/g, "");
+
+    // // Asegurar solo un punto decimal
+    // const partes = valorPVP.split(".");
+    // if (partes.length > 2) {
+    //   valorPVP = partes[0] + "." + partes.slice(1).join("");
+    // }
+
+    // // Limitar a 2 decimales
+    // if (partes[1]) {
+    //   partes[1] = partes[1].slice(0, 2);
+    //   valorPVP = partes.join(".");
+    // }
 setTextoInputPVP(valorPVP)
-
-
+   
+//-----------
 
 }
 
@@ -534,6 +855,7 @@ const[elevarTablaFinalGod,setelevarTablaFinalGod]=useState([])
 
 
 function tablaFinalGod(tabla){
+  console.log(tabla)
 setelevarTablaFinalGod(tabla)
 }
 
@@ -579,10 +901,13 @@ const handleDrag=(e)=>{
 //----------------------------------------------------------------------------
 // 3) Cuando soltemos los archivos en el contenedor 
 const handleDrop=(e)=>{
+  console.log(`ok`)
   e.preventDefault();
   e.stopPropagation();
   setDragging(false)
   dragCounter.current=0
+
+
   if (e.dataTransfer.items && e.dataTransfer.items.length>0 ){
     //Aqui realizas la operacion donde mandaras los archivos al backend o donde los mostraras
   console.log(`Archivos Arrastrados`,e.dataTransfer.items)
@@ -636,12 +961,31 @@ useEffect(() => {
       const item = items[i];
       if (item.type.indexOf("image") !== -1) {
         const file = item.getAsFile();
+          setFileToUpload(file);
         const url = URL.createObjectURL(file);
         setPreviewUrl(url);
         break; // si quieres permitir varias imágenes, elimina esta línea
       }
     }
   };
+
+
+
+
+  // 📋 Cuando pegas una imagen con Ctrl + V
+  // const handlePaste = (e) => {
+  //   if (e.clipboardData && e.clipboardData.files.length > 0) {
+  //     const file = e.clipboardData.files[0];
+  //     if (file && file.type.startsWith("image/")) {
+  //       if (previewUrl) URL.revokeObjectURL(previewUrl); // 🔄 liberar la anterior
+  //       const url = URL.createObjectURL(file);
+  //       setPreviewUrl(url);
+  //       setFileToUpload(file);
+  //       console.log("📋 Imagen pegada:", file);
+  //     }
+  //   }
+  // };
+
 
   // ------------------ ASIGNAR EVENTOS ------------------
 
@@ -698,15 +1042,12 @@ useEffect(() => {
 
 
 
-
-
-
   return (
     <div className='container-mostrarInfo'>
 
 
 
-<h2 className='mostrarInfo_title'>AGREGA NUEVO TRABAJO</h2>
+<h2 className='mostrarInfo_title'>{finalTitle}</h2>
 <hr className='line1'/>
 
 
@@ -891,7 +1232,7 @@ optionMaterial.map((item)=>{
 
 {
 encerarAgregarTrab=="" && nuevoTrabajoCreado1==""?'':
-  <Costos elevarPVP={fcnPvpElevado} elevarPSG={fcnPsgElevado} pvpSuperior={textoInputPVP} inputRef={inputRef} listaFinalGastos={listaGastos} info={addComponent} tablaGastosFinal={tablaFinalGod} ></Costos>
+  <Costos modoCrEdDu={mode} costosParaEditar={costosEdit}elevarPVP={fcnPvpElevado} elevarPSG={fcnPsgElevado} pvpSuperior={textoInputPVP} inputRef={inputRef} listaFinalGastos={listaGastos} info={addComponent} tablaGastosFinal={tablaFinalGod} ></Costos>
 
 
 }
@@ -909,12 +1250,12 @@ encerarAgregarTrab=="" && nuevoTrabajoCreado1==""?'':
 
 
 
-
+{/* (mode === "edit" || mode === "duplicar") */}
 
 
    <div className="drag_and_drop">
   <div className="inside_drag ">
-    <div ref={divDrag} tabIndex={0} className={dragging ? "main dragging" : "main"}>
+    <div ref={divDrag} tabIndex={0}  className={dragging ? "main dragging" : "main"}>
       {previewUrl ? (
         // 👇 Si ya hay imagen, la mostramos aquí en lugar del texto
         <img

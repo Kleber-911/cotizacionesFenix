@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 export const ListWorkSearch = ({ busquedaFinal ,tituloTabla}) => {
         // console.log(busquedaFinal)
   const [infoFiltrada, setInfoFiltrada] = useState([]);
+ 
 
   useEffect(() => {
     if (!busquedaFinal || busquedaFinal.length === 0) {
@@ -13,11 +14,26 @@ export const ListWorkSearch = ({ busquedaFinal ,tituloTabla}) => {
     }
   }, [busquedaFinal]);
 
-  const ListaTrabajosC = ({ cli, fe, tra, est, cant, psg, pvp, arrayTrabajo }) => (
+
+function showSize(siz1,siz2){
+  console.log(siz1)
+  console.log(siz2)
+  if (siz2==""){
+    alert(` => `+siz1)
+
+  }else{
+    alert(siz2+` = `+siz1)
+
+  }
+}
+
+
+  const ListaTrabajosC = ({ cli, fe, tra, est, cant, psg, pvp,siz1,siz2, arrayTrabajo }) => (
+
     <div className="wl-container-info">
       <div className="wl-info">{cli}</div>
       <div className="wl-info">{fe}</div>
-      <div className="wl-info">{tra}</div>
+      <div className="wl-info infoTrabajo1" onDoubleClick={()=>showSize(siz1,siz2)}>{tra}</div>
       <div className="wl-info">  <div className={est=='cotizacion'?" circleInside circle-yellow":"circleInside circle-green"} > </div>  </div>
       <div className="wl-info">{cant}</div>
       <div className="wl-info">{psg}</div>
@@ -34,8 +50,6 @@ export const ListWorkSearch = ({ busquedaFinal ,tituloTabla}) => {
 
 
 
-
-        {/* <a href={enlace}>ir</a> */}
       </div>
     </div>
   );
@@ -83,6 +97,8 @@ export const ListWorkSearch = ({ busquedaFinal ,tituloTabla}) => {
               psg={item.PSG}
               pvp={item.PVP}
               arrayTrabajo={item}
+              siz1={item.TamanoMedida}
+              siz2={item.TamanoNombre}
             />
           ))
         ) : (
