@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./listWorkSearch.scss";
 import { NavLink } from 'react-router-dom'
+
+
 export const ListWorkSearch = ({ busquedaFinal ,tituloTabla}) => {
         // console.log(busquedaFinal)
   const [infoFiltrada, setInfoFiltrada] = useState([]);

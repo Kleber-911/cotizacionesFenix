@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import './modalkeywords.scss';
+import API_URL from "../api";
 
 export const ModalKeywords = ({ isOpen, closeModal, execModalKeyW, cliente1 }) => {
   const [allkeywords, setallkeywords] = useState([]);
@@ -12,7 +13,7 @@ export const ModalKeywords = ({ isOpen, closeModal, execModalKeyW, cliente1 }) =
 
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:3000/allkeywords1/" + cliente, {
+      const response = await fetch(`${API_URL}/allkeywords1/` + cliente, {
         method: "GET",
       });
 

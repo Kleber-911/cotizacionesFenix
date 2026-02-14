@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './mostrarinfo.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ModalFoto } from './ventanasModales/ModalFoto';
+import API_URL from "./api";
 
 export const MostrarInfo = () => {
   const [modalFotoWindow, setmodalFotoWindow] = useState(false);
@@ -17,7 +18,7 @@ const fechaLocal = new Date(year, month - 1, day);
   // 🔹 Obtener gastos específicos
   const getAllGastosEspecificos = async (a1) => {
     try {
-      const response = await fetch(`http://localhost:3000/gastosespecificos/${a1}`, {
+      const response = await fetch(`${API_URL}/gastosespecificos/${a1}`, {
         method: "GET"
       });
 
@@ -66,7 +67,7 @@ const fechaLocal = new Date(year, month - 1, day);
     if (!confirmar) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/eliminarTrabajo/${datos.PedidoID}`, {
+      const response = await fetch(`${API_URL}/eliminarTrabajo/${datos.PedidoID}`, {
         method: "DELETE",
       });
 

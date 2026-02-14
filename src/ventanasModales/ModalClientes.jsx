@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './modalclientes.scss'
+import API_URL from "../api";
 
 export const ModalClientes = ({ isOpen, closeModal,execFucionClientes }) => {
   
@@ -9,7 +10,7 @@ export const ModalClientes = ({ isOpen, closeModal,execFucionClientes }) => {
 
   const getAllClientes = async () => {
     try {
-      const response = await fetch("http://localhost:3000/clientes", {
+      const response = await fetch(`${API_URL}/clientes`, {
         method: "GET"
       });
 

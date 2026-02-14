@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './modaltamanos.scss'
+import API_URL from "../api";
+
 export const ModalTamanos = ({isOpen,closeModal,modaltam2,trab2}) => {
   const [estadoRadioMedida, setestadoRadioMedida] = useState("No");
   const[medida1,setmedida1]=useState("")
@@ -23,7 +25,7 @@ export const ModalTamanos = ({isOpen,closeModal,modaltam2,trab2}) => {
 const saveTamano=async(med)=>{
     try {
 
-        const response=await fetch (`http://localhost:3000/savetamano`,{
+        const response=await fetch (`${API_URL}/savetamano`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json"

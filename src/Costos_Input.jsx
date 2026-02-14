@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './costos.scss'
-
+import API_URL from "./api";
 export const Costos_Input = ({handleInfo,id,ref,tabIndex1,idwork1,listaGastos}) => {
 
 
@@ -63,7 +63,7 @@ const existe = nombres.some(item => item.toLowerCase() === valor.toLowerCase());
 
 const fixErase = async (a) => {
   try {
-    const response = await fetch(`http://localhost:3000/fixerasegastos/` + a, {
+    const response = await fetch(`${API_URL}/fixerasegastos/` + a, {
       method: "POST",
     });
 
@@ -117,10 +117,47 @@ async function fijarEliminarCosto() {
         <datalist id="opciones">
 
 
-  <option value="Transporte" />
-  <option value="Redondeado" />
-  <option value="Laminado" />
-  <option value="UV" />
+
+
+ <option value="Papel"/>
+ <option value="Placas+Impresión"/>
+ <option value="Corte"/>
+ <option value="UV"/>
+ <option value="Perforación"/>
+ <option value="Papel Adhesivo"/>
+ <option value="Impresión Digital"/>
+ <option value="Medio corte"/>
+ <option value="Numerado"/>
+ <option value="Compaginado+Pegado"/>
+ <option value="Troquel"/>
+ <option value="Troquelado"/>
+ <option value="Pegado Bolsillo"/>
+ <option value="Perforado"/>
+ <option value="Terminados(Peg+Grap+Kraf)"/>
+ <option value="Terminados(Peg+Kraf)"/>
+ <option value="Doblado"/>
+ <option value="Plastificado"/>
+ <option value="Corte Laser"/>
+ <option value="Placas+Impresón Hojas"/>
+ <option value="Cartones"/>
+ <option value="Adhesivo Guardas"/>
+ <option value="Impresón Hojas"/>
+ <option value="Laminado Pastas"/>
+ <option value="Anillos"/>
+ <option value="Mano Obra"/>
+ <option value="Desgaste de Máquina"/>
+ <option value="Impresión Hojas"/>
+ <option value="Impresión Portada"/>
+ <option value="Laminado"/>
+ <option value="Grafado"/>
+ <option value="Encolado"/>
+ <option value="Madera"/>
+ <option value="Argollas"/>
+
+
+
+
+
 
 
 

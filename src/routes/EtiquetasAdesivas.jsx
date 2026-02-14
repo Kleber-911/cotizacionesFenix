@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { ListWorkSearch } from '../ListWorkSearch'
+import API_URL from "../api";
 
 export const EtiquetasAdesivas = () => {
 const[busquedaTrabajos1,setbusquedaTrabajos1]=useState(0)
@@ -20,7 +21,7 @@ const enviarDatosBusqueda = async () => {
     console.log("Datos a enviar:", datos);
 
     // 3️⃣ Enviar todo al backend
-    const res = await fetch("http://localhost:3000/searchtrabajos", {
+    const res = await fetch(`${API_URL}/searchtrabajos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos),

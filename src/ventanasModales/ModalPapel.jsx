@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './modalpapel.scss'
+import API_URL from "../api";
+
 export const ModalPapel = ({isOpen,closeModal,modalpapel2,trab2}) => {
 
 
@@ -19,7 +21,7 @@ export const ModalPapel = ({isOpen,closeModal,modalpapel2,trab2}) => {
   const getAllMateriales = async () => {
     try {
       // console.log("holaaaaa")
-      const response = await fetch("http://localhost:3000/all1materiales", {
+      const response = await fetch(`${API_URL}/all1materiales`, {
         method: "GET"
       });
 

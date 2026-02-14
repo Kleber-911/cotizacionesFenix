@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './modalTrabajos.scss'
+import API_URL from "../api";
+
 export const ModalTrabajos = ({isOpen,closeModal,modalTrabajo2}) => {
 
   const [seeAllMate, setseeAllMate] = useState([]);
@@ -14,7 +16,7 @@ export const ModalTrabajos = ({isOpen,closeModal,modalTrabajo2}) => {
   const getAllMaterialesYPapeles = async () => {
     try {
      
-      const response = await fetch("http://localhost:3000/all1MaterialesYPapeles", {
+      const response = await fetch(`${API_URL}/all1MaterialesYPapeles`, {
         method: "GET"
       });
 

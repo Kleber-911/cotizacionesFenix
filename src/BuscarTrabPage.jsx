@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './buscarTrabPage.scss'
 import { ModalClientes } from './ventanasModales/ModalClientes'
 import { ModalKeywords } from './ventanasModales/ModalKeywords';
+import API_URL from "./api";
 export const BuscarTrabPage = ({handleBussqueda}) => {
-
 
 
  const [textoInputCLIENTE, setTextoInputCLIENTE] = useState("");
@@ -53,7 +53,7 @@ useEffect(() => {
 
 const getTrabajos=async()=>{
     try {
-        const response=await fetch (`http://localhost:3000/trabajos`);
+        const response=await fetch (`${API_URL}/trabajos`);
         if (!response.ok){
                 throw new Error(`Error en la solicitud: `+response.status)
         }
@@ -69,7 +69,7 @@ const getTrabajos=async()=>{
 
 const gettamanos=async()=>{
     try {
-        const response=await fetch (`http://localhost:3000/alltamanos12`);
+        const response=await fetch (`${API_URL}/alltamanos12`);
         if (!response.ok){
                 throw new Error(`Error en la solicitud: `+response.status)
         }
@@ -85,7 +85,7 @@ const gettamanos=async()=>{
 
 const getmateriales=async()=>{
     try {
-        const response=await fetch (`http://localhost:3000/allmateriales12`);
+        const response=await fetch (`${API_URL}/allmateriales12`);
         if (!response.ok){
                 throw new Error(`Error en la solicitud: `+response.status)
         }
@@ -229,7 +229,7 @@ const enviarDatosBusqueda = async () => {
     console.log("Datos a enviar:", datos);
 
     // 3️⃣ Enviar todo al backend
-    const res = await fetch("http://localhost:3000/searchtrabajos", {
+    const res = await fetch(`${API_URL}/searchtrabajos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos),

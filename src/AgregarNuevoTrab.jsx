@@ -6,7 +6,7 @@ import { ModalClientes } from './ventanasModales/ModalClientes'
 import { ModalPapel } from './ventanasModales/ModalPapel'
 import { ModalTamanos } from './ventanasModales/ModalTamanos'
 import { useLocation, useNavigate  } from "react-router-dom";
-
+import API_URL from "./api";
 export const AgregarNuevoTrab = () => {
  const navigate = useNavigate();
 const location = useLocation();
@@ -97,7 +97,7 @@ setfinalTitle("AGREGA NUEVO TRABAJO")
 
 const getTrabajos=async()=>{
     try {
-        const response=await fetch (`http://localhost:3000/trabajos`);
+        const response=await fetch (`${API_URL}/trabajos`);
         if (!response.ok){
                 throw new Error(`Error en la solicitud: `+response.status)
         }
@@ -124,8 +124,8 @@ const[encerarElegirCol,setEncerarElegirCol]=useState("Full Color")
 
 const getMaterialesTamanos=async(a)=>{
     try {
-        // console.log(`http://localhost:3000/trabajosMaterialPapel/`+a)
-        const response=await fetch (`http://localhost:3000/trabajosMaterialPapel/`+a,{
+       
+        const response=await fetch (`${API_URL}/trabajosMaterialPapel/`+a,{
             method:"get"
         });
         if (!response.ok){
@@ -152,8 +152,8 @@ const[listaGastos,setlistaGastos]=useState([0])
 //para la lista de gastos segun el select trabajos 
 const getGastos=async(a)=>{
     try {
-        // console.log(`http://localhost:3000/trabajosMaterialPapel/`+a)
-        const response=await fetch (`http://localhost:3000/getallgastos/`+a,{
+        
+        const response=await fetch (`${API_URL}/getallgastos/`+a,{
             method:"get"
         });
         if (!response.ok){
@@ -366,7 +366,7 @@ if (fileToUpload==""){
     const formData = new FormData();
     formData.append("image", fileToUpload);
 
-    const cloudResponse = await fetch("http://localhost:3000/sendcloud", {
+    const cloudResponse = await fetch(`${API_URL}/sendcloud`, {
       method: "POST",
       body: formData,
     });
@@ -418,7 +418,7 @@ console.log(imageUrl)
     console.log("Datos a enviar:", datos);
 
     // 3️⃣ Enviar todo al backend
-    const res = await fetch("http://localhost:3000/trabajos", {
+    const res = await fetch(`${API_URL}/trabajos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos),
@@ -471,7 +471,7 @@ if (fileToUpload && fileToUpload !== "") {
         formData.append("fotoAntigua", fotoAntigua);
       }
 
-      const cloudResponse = await fetch("http://localhost:3000/updatecloud", {
+      const cloudResponse = await fetch(`${API_URL}/updatecloud`, {
         method: "POST",
         body: formData,
       });
@@ -538,7 +538,7 @@ let idtamano=datosArriba.TamanoID
 
     // 3️⃣ Enviar todo al backend
     console.log(datosArriba.PedidoID)
-    const res = await fetch(`http://localhost:3000/editarpedido/${datosArriba.PedidoID}`, {
+    const res = await fetch(`${API_URL}/editarpedido/${datosArriba.PedidoID}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos),
