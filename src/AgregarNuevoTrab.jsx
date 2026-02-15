@@ -7,6 +7,11 @@ import { ModalPapel } from './ventanasModales/ModalPapel'
 import { ModalTamanos } from './ventanasModales/ModalTamanos'
 import { useLocation, useNavigate  } from "react-router-dom";
 import API_URL from "./api";
+
+
+
+
+
 export const AgregarNuevoTrab = () => {
  const navigate = useNavigate();
 const location = useLocation();
@@ -14,6 +19,7 @@ const location = useLocation();
 const { state } = location || {};
 const datosArriba = state?.datos;
 const mode = state?.mode || "create";
+console.log(mode)
 const costosEdit = state?.costosEdit || [];
 
 const[optionTrabajos,setOptionTrabajos]=useState([])

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './costos.scss'
 
-export const Costos_Ganancia = ({handleGanancia,valorGananciaMostrar}) => {
+export const Costos_Ganancia = ({handleGanancia,valorGananciaMostrar,tabindex2}) => {
     const[valorInputGanancia,setvalorInputGanancia]=useState("")
 
 
@@ -78,7 +78,7 @@ useEffect(() => {
   
   return (
                 <div title={""}className='costos_item costos_item_ganancia '> <p className='box_ganancia'>Ganancia</p>   <div className='containerDatos'>  
-                <input value={ isNaN(valorInputGanancia)  ?0:  valorInputGanancia} onChange={escribirGanacia}className='input_costos' type="text" /><span>$</span> </div></div>
+                <input tabIndex={tabindex2} value={ isNaN(valorInputGanancia)  ?0:  valorInputGanancia} onChange={escribirGanacia}className='input_costos' type="text" /><span>$</span> </div></div>
 
   )
 }

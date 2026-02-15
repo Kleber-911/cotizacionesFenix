@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './costos.scss'
 
-export const Costos_PVP = ({handlePvp,valorPVPMostrar,pvpSuperior1}) => {
+export const Costos_PVP = ({handlePvp,valorPVPMostrar,pvpSuperior1,tabindex3}) => {
     const[valorInputPvp,setvalorInputPvp]=useState("")
 
 
@@ -78,7 +78,7 @@ handlePvp([pvpSuperior1])
 
   return (
                 <div title={""}className='costos_item costos_item_ganancia'> <p className='box_ganancia'>PVP</p>   <div className='containerDatos'>  
-                <input value={ isNaN(valorInputPvp)  ?0:  valorInputPvp } onChange={escribirpvp}className='input_costos' type="text" /><span>$</span> </div></div>
+                <input tabIndex={tabindex3} value={ isNaN(valorInputPvp)  ?0:  valorInputPvp } onChange={escribirpvp}className='input_costos' type="text" /><span>$</span> </div></div>
 
   )
 }

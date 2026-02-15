@@ -3,6 +3,8 @@ import './buscarTrabPage.scss'
 import { ModalClientes } from './ventanasModales/ModalClientes'
 import { ModalKeywords } from './ventanasModales/ModalKeywords';
 import API_URL from "./api";
+
+
 export const BuscarTrabPage = ({handleBussqueda}) => {
 
 

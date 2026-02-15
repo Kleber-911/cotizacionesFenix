@@ -31,6 +31,11 @@ export const Costos = ({
   const [valorPVPMostrar, setvalorPVPMostrar] = useState(0)
   const [inputGanacia, setinputGanacia] = useState(0)
   const [inputpvp, setinputpvp] = useState(0)
+
+  
+
+ 
+
   // const [editPSG, seteditPSG] = useState(0)
   // const [editGANANCIA, seteditGANANCIA] = useState(0)
   // const [editPVP, seteditPVP] = useState(0)
@@ -76,6 +81,16 @@ const costosIndependientes = costosParaEditar
   .map(item => item.Costo ?? item.dinero) // usa Costo si existe, si no dinero
   .filter(val => typeof val === "number" && !isNaN(val)); // quita valores vacíos o no numéricos
  setCostosFinales(costosIndependientes)
+
+
+
+
+
+
+
+
+
+
     }else{
       
        if (listaFinalGastos && listaFinalGastos[0] && listaFinalGastos[0] !== 0) {
@@ -84,6 +99,7 @@ const costosIndependientes = costosParaEditar
       settablaGodGastos(listaFinalGastos[0])
     }
     }
+    console.log(tablaGodGastos)
   }, [listaFinalGastos])
 // console.log(costosFinales)
 //-----
@@ -229,7 +245,7 @@ let total2=total
 
   const trabajoID = listaFinalGastos?.[0]?.[0]?.TrabajoID;
   const base = nuevaTabla.map((item) => {
-    // if (trabajoID && item.TrabajoID !== trabajoID) return item;
+    if (trabajoID && item.TrabajoID !== trabajoID) return item;
 
     if (item.Nombre === "PSG") return { ...item, dinero: total2 };
     if (item.Nombre === "Ganancia") return { ...item, dinero: ganancia };///add al final 
@@ -383,6 +399,8 @@ console.log(listaFinalGastos)
 console.log(tablaGodGastos)
 console.log(mostrarGastos)
 console.log(costosFinales)
+let ultimoIndex = -1;
+console.log(ultimoIndex)
   // ----------------- RENDER -------------------
   return (
     <div className='container_costos'>
@@ -395,6 +413,7 @@ mostrarGastos.map((comp, index) => {
     return null; // no renderiza nada para esos
   }
 
+ultimoIndex = index; // 👈 solo asignas, NO setState
   return (
     <Costos_Hijo
       key={ index}
@@ -426,17 +445,15 @@ mostrarGastos.map((comp, index) => {
         />
       ))}
 
-     {/* editPSG
-editGANANCIA
-editPVP */}
+
 
 
 
       <hr className='line' />
       <Costos_PSG res={sumaCostosFinales} />
-      <Costos_Ganancia valorGananciaMostrar={valorGananciaMostrar} handleGanancia={InfoGanancia} />
+      <Costos_Ganancia valorGananciaMostrar={valorGananciaMostrar} handleGanancia={InfoGanancia}  tabindex2={ultimoIndex+1}/>
       <hr className='line' />
-      <Costos_PVP pvpSuperior1={pvpSuperior} valorPVPMostrar={valorPVPMostrar} handlePvp={InfoPVP} />
+      <Costos_PVP pvpSuperior1={pvpSuperior} valorPVPMostrar={valorPVPMostrar} handlePvp={InfoPVP} tabindex3={ultimoIndex+1}/>
     </div>
   )
 }

@@ -24,6 +24,7 @@ const fechaLocal = new Date(year, month - 1, day);
 
       if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
       const data = await response.json();
+      console.log(data)
       return data;
     } catch (error) {
       console.log("Hubo un problema con la petición:", error);
@@ -32,9 +33,10 @@ const fechaLocal = new Date(year, month - 1, day);
 
   useEffect(() => {
     if (!datos?.PedidoID) return;
-
+console.log(datos.PedidoID)
     const fetchAllGastosEspecificos = async () => {
       const todos_Gastos = await getAllGastosEspecificos(datos.PedidoID);
+      console.log(todos_Gastos)
       if (todos_Gastos) setallGastos(todos_Gastos);
     };
     fetchAllGastosEspecificos();

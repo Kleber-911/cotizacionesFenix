@@ -18,7 +18,7 @@ const enviarDatosBusqueda = async () => {
      
     };
 
-    console.log("Datos a enviar:", datos);
+    // console.log("Datos a enviar:", datos);
 
     // 3️⃣ Enviar todo al backend
     const res = await fetch(`${API_URL}/searchtrabajos`, {
@@ -33,7 +33,7 @@ const enviarDatosBusqueda = async () => {
       // alert("✅ Guardado con éxito");
       setbusquedaTrabajos1(respuesta)
      
-      console.log("Respuesta del backend:", respuesta);
+      // console.log("Respuesta del backend:", respuesta);
     } else {
       // alert("❌ Error al guardar los datos");
     }

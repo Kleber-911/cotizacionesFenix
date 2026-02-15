@@ -3,7 +3,7 @@ import "./listWorkSearch.scss";
 import { NavLink } from 'react-router-dom'
 
 
-export const ListWorkSearch = ({ busquedaFinal ,tituloTabla}) => {
+export const ListWorkSearch = ({  busquedaFinal ,tituloTabla}) => {
         // console.log(busquedaFinal)
   const [infoFiltrada, setInfoFiltrada] = useState([]);
  
@@ -70,8 +70,8 @@ function showSize(siz1,siz2){
       <div className="wl-encabezado">TRABAJO</div>
       <div className="wl-encabezado">ESTADO</div>
       <div className="wl-encabezado">CANT.</div>
-      <div className="wl-encabezado">PSG</div>
-      <div className="wl-encabezado">PVP</div>
+      <div className="wl-encabezado">PSG $</div>
+      <div className="wl-encabezado">PVP $</div>
       <div className="wl-encabezado">VER MÁS</div>
     </div>
   );

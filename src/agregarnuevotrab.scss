@@ -508,20 +508,22 @@ border: 2px solid $PrimaryColor;
 .show-costos-finales{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+// background-color: rgb(44, 182, 16);
+
 }
 
 
 
-
+//*************************************************
 .costo-item{
       margin: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.3em;
-width: 45%;
+width: 73%;
 // background-color: #d88;
 color: #626362;
-padding-left:30px ;
+padding-left:5px ;
 box-sizing: border-box;
 
 }
@@ -529,8 +531,8 @@ box-sizing: border-box;
       margin: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.3em;
-width: 45%;
-// background-color: rgb(167, 92, 92);
+width: 27%;
+// background-color: rgb(228, 6, 6);
 text-align: center;
 color: #009b00;
 box-sizing: border-box;
