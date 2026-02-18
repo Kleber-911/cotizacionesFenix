@@ -525,8 +525,15 @@ width: 73%;
 color: #626362;
 padding-left:5px ;
 box-sizing: border-box;
-
+// background-color: #aa3b3b;
+overflow: hidden; 
+  text-overflow: ellipsis; 
 }
+
+
+
+
+
 .valor-item{
       margin: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

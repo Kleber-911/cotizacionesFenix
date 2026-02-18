@@ -36,6 +36,7 @@ margin: auto;
     color: $PrimaryColor;
    font-family: Arial, Helvetica, sans-serif;
 margin: 0px;
+
 }
 
 .container-info{
@@ -53,7 +54,7 @@ margin: 0px;
     margin: 0px;
     font-size: 1.2em;
    font-family: Arial, Helvetica, sans-serif;
- 
+
 }
 
 
@@ -61,12 +62,13 @@ margin: 0px;
     
     grid-area: 1/ 1/2/-1;
     display: flex;
-
+// background-color: #d88;
+ 
 }
 .containerCampo_cliente h4{
     display: inline-block;
     margin-top: -7px;
-    // background-color: #d88;
+    // background-color: rgb(117, 31, 31);
 }
 .containerCampo_cliente p{
     display: inline-block;
@@ -74,7 +76,8 @@ margin: 0px;
     // background-color: #d88;
     margin-left: 10px;
 // background-color: #d88;
-line-height: 15px;
+line-height: 20px;
+margin-top: -3px;
 }
 
 
@@ -92,7 +95,8 @@ line-height: 15px;
     display: inline-block;
     margin-left: 10px;
     // background-color: #d88;
-    line-height: 15px;
+    line-height: 20px;
+    margin-top: -3px;
 }
 
 
@@ -295,7 +299,7 @@ margin-right: 5px;
     
     grid-area: 1/ 1/2/-1;
     display: flex;
-
+// background-color: rgb(247, 187, 187);
 }
 
 .containerCampo_keywords{ 

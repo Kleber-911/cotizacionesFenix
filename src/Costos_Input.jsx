@@ -141,18 +141,19 @@ async function fijarEliminarCosto() {
  <option value="Placas+Impresón Hojas"/>
  <option value="Cartones"/>
  <option value="Adhesivo Guardas"/>
- <option value="Impresón Hojas"/>
  <option value="Laminado Pastas"/>
  <option value="Anillos"/>
  <option value="Mano Obra"/>
  <option value="Desgaste de Máquina"/>
  <option value="Impresión Hojas"/>
- <option value="Impresión Portada"/>
+ <option value="Impresión Digital"/>
+ <option value="Impresión Offset"/>
  <option value="Laminado"/>
  <option value="Grafado"/>
  <option value="Encolado"/>
  <option value="Madera"/>
  <option value="Argollas"/>
+ <option value="Transporte"/>
 
 
 

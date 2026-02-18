@@ -46,7 +46,7 @@ console.log(datos.PedidoID)
   const ShowCostosFinales = ({ itemCosto, itemValor }) => (
     <>
       {(itemCosto === "PSG" || itemCosto === "PVP") && <hr className='line3' />}
-      <div className="show-costos-finales">
+      <div title={itemCosto} className="show-costos-finales">
         <div className="costo-item">{itemCosto}</div>
         <div className="valor-item">{itemValor} <span>$</span></div>
       </div>
