@@ -230,13 +230,42 @@ box-shadow: 1px 0px 14px 3px rgba(255,94,0,0.72);
   // background-color: #d88;
 }
 .wl-encabezado:nth-child(8){ 
-background-color: #d88; 
+// background-color: #d88; 
 font-size: 0.6em;
 }
 .wl-encabezado:nth-child(2),.wl-info:nth-child(2){
  flex-basis: 145px;
+ font-size:0.8em ;
 }
 .wl-encabezado:nth-child(3),.wl-info:nth-child(3){
  flex-basis: 180px;
+ font-size:0.8em ;
 }
+.wl-info:nth-child(3){
+   white-space: normal;
+  word-break: break-word;
+ 
+}
+.wl-encabezado:nth-child(1),.wl-info:nth-child(1){
+  flex-basis: 300px;
+  font-size:0.8em ;
+}
+
+.wl-encabezado:nth-child(4),.wl-info:nth-child(4){
+  flex-basis: 120px;
+  font-size:0.8em ;
+}
+.wl-encabezado:nth-child(5),.wl-info:nth-child(5){
+  flex-basis: 120px;
+  font-size:0.8em ;
+}
+.wl-encabezado:nth-child(6),.wl-info:nth-child(6){
+  flex-basis: 120px;
+  font-size:0.8em ;
+}
+.wl-encabezado:nth-child(7),.wl-info:nth-child(7){
+  flex-basis: 120px; 
+  font-size:0.8em ;
+}
+
 }
