@@ -23,7 +23,7 @@ export const NavBar = () => {
         to="/tarjetas" 
         className={({ isActive }) => `nav-text tarjetas1 ${isActive ? 'active' : ''}`}
       >
-        Tarjetas
+        Tarjetas Pres.
       </NavLink>
 
       <NavLink 

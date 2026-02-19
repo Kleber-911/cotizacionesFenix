@@ -12,7 +12,7 @@ const enviarDatosBusqueda = async () => {
  
 
     const datos = {
-      s_Trabajo:'Tarjetas' ,
+      s_Trabajo:'Tarjetas Presentación' ,
        s_Limitar:true
      
     };
