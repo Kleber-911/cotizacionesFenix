@@ -83,10 +83,179 @@ Si no se ingresa ningún campo de busqueda me devolverá todos los trabajos exis
   <li>
 Si damos doble-click en el PVP, nos va a salir una ventana con el precio unitario (PVP/Cantidad)
 </li>
-
-
-
 </ul>
+
+
+
+<h2 className='title2'>Estandar de trabajos:</h2>
+
+<h3 className='title2a'>Boletos Rifa:</h3>
+<p className='parr2a'>Solo para rifas</p>
+<br/>
+<br/>
+
+
+
+<h3 className='title2a'>Entradas:</h3>
+<p className='parr2a'>Entradas para bailes y eventos en general (ligas de futbol o tickets de parqueadero)</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Carpetas:</h3>
+<p className='parr2a'>Todo lo que sirva para almacenar hojas </p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Etiquetas:</h3>
+<p className='parr2a'>Etiquetas para poner en algun producto(que no sean adesivas), ej: tarjetas de cambio de aceite perforadas, </p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Etiquetas Adesivas:</h3>
+<p className='parr2a'>Etiquetas para poner en algun producto , ya sean en vinil o adesivvo normal(con o sin troquelado)</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Tripticos:</h3>
+<p className='parr2a'></p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Flyers:</h3>
+<p className='parr2a'></p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Cuadernos pasta dura o delgada:</h3>
+<p className='parr2a'>Cuadernos o libretas pasta dura o delgada</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Libros:</h3>
+<p className='parr2a'>Impresion de hojas, puede ser encolado o anillado Ej: folletos, revistas, libros</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Raspaditas:</h3>
+<p className='parr2a'>todo lo que se pueda raspar</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Tarjetas de presentacion:</h3>
+<p className='parr2a'></p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Esferos:</h3>
+<p className='parr2a'></p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Menus:</h3>
+<p className='parr2a'>todo menu en carton o solo plastificado</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Trofeos/Placas:</h3>
+<p className='parr2a'>Incluye acrilicos con impresion UV/Dtf</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Blocs:</h3>
+<p className='parr2a'>Todo lo que es impreso y pegado como blocs (SIN NUMERAR)</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Nota de venta:</h3>
+<p className='parr2a'>Todo lo que es impreso, numerado y hecho bloc(encolado)</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Impresion Offset:</h3>
+<p className='parr2a'>Unicamente impresion y/o numerado PERO SIN PEGAR, ej: hojas cuadros, papel encerado para comidas</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Recetarios:</h3>
+<p className='parr2a'>Recetarios medicos con o sin numerar</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Comandas:</h3>
+<p className='parr2a'>Tacos de papel encolados, con o sin numerar , con o sin impresion </p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Calendarios:</h3>
+<p className='parr2a'>Escritorio, de pared, de bolsillo</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Toma todo:</h3>
+<p className='parr2a'></p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Bolsas/Fundas:</h3>
+<p className='parr2a'>Papel , cambrela , etc</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Llaveros:</h3>
+<p className='parr2a'>Madera, Acrilico, en resina , etc</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Sobres:</h3>
+<p className='parr2a'>con o sin impresion</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Carnets/Credenciales:</h3>
+<p className='parr2a'>Todo lo que tenga datos variables de nombres, etc, incluso diplomas</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Tarjetas solidarias:</h3>
+<p className='parr2a'>Chanchitos solidarios, con o sin numerar, sin pegar</p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Afiches</h3>
+<p className='parr2a'>Tamaño grande , doble oficio o mas, un color o full color  </p>
+<br/><br/>
+
+
+
+<h3 className='title2a'>Recuerdos</h3>
+<p className='parr2a'>Hechos por nosotros con corte laser, </p>
+<br/><br/>
+
 
 
 
