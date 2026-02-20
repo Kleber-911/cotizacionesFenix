@@ -60,8 +60,17 @@ const getTrabajos=async()=>{
                 throw new Error(`Error en la solicitud: `+response.status)
         }
         const data = await response.json();
-        console.log(data)
-        return data
+   
+
+    const dataOrdenada = data.sort((a, b) =>
+      a.Nombre.localeCompare(b.Nombre, 'es')
+    );
+
+    console.log(dataOrdenada);
+
+    return dataOrdenada;
+
+        
         
     } catch (error) {
         console.log('hubo un problema con la peticion:',error)

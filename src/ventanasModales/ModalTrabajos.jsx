@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './modalTrabajos.scss'
 import API_URL from "../api";
 
+
 export const ModalTrabajos = ({isOpen,closeModal,modalTrabajo2}) => {
 
   const [seeAllMate, setseeAllMate] = useState([]);
@@ -126,7 +127,7 @@ setinputTrabajo(valor3)
 const saveTrabajo=async(med)=>{
     try {
 
-        const response=await fetch (`http://localhost:3000/savenewtrabajo`,{
+        const response=await fetch (`${API_URL}/savenewtrabajo`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json"

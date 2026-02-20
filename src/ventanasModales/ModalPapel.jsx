@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './modalpapel.scss'
 import API_URL from "../api";
+import API_URL from "../api";
 
 export const ModalPapel = ({isOpen,closeModal,modalpapel2,trab2}) => {
 
@@ -120,7 +121,7 @@ let limpio_sinRepetidosonlyGramajes = sinRepetidosonlyGramajes.filter(v => v !==
 const saveMaterial=async(med)=>{
     try {
 
-        const response=await fetch (`http://localhost:3000/savematerial`,{
+        const response=await fetch (`${API_URL}/savematerial`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json"
