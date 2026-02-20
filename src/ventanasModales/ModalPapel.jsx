@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './modalpapel.scss'
 import API_URL from "../api";
-import API_URL from "../api";
+
 
 export const ModalPapel = ({isOpen,closeModal,modalpapel2,trab2}) => {
 
