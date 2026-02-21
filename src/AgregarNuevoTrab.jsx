@@ -19,7 +19,7 @@ const location = useLocation();
 const { state } = location || {};
 const datosArriba = state?.datos;
 const mode = state?.mode || "create";
-console.log(mode)
+console.log(datosArriba)
 const costosEdit = state?.costosEdit || [];
 
 const[optionTrabajos,setOptionTrabajos]=useState([])
@@ -370,10 +370,16 @@ if (mode === "create" || mode === "duplicar"){
  
 
 
+
 let imageUrl
+
 console.log(fileToUpload)
 if (fileToUpload==""){
  imageUrl=""
+
+
+
+
 }else{
 
     const formData = new FormData();
@@ -698,7 +704,7 @@ setFechaHoy(datosArriba.Fecha || new Date());
   
   setFechaHoy(hoy);
 
-
+ setPreviewUrl("")
 }
 
 
@@ -985,19 +991,7 @@ useEffect(() => {
 
 
 
-  // 📋 Cuando pegas una imagen con Ctrl + V
-  // const handlePaste = (e) => {
-  //   if (e.clipboardData && e.clipboardData.files.length > 0) {
-  //     const file = e.clipboardData.files[0];
-  //     if (file && file.type.startsWith("image/")) {
-  //       if (previewUrl) URL.revokeObjectURL(previewUrl); // 🔄 liberar la anterior
-  //       const url = URL.createObjectURL(file);
-  //       setPreviewUrl(url);
-  //       setFileToUpload(file);
-  //       console.log("📋 Imagen pegada:", file);
-  //     }
-  //   }
-  // };
+ 
 
 
   // ------------------ ASIGNAR EVENTOS ------------------
@@ -1263,7 +1257,7 @@ encerarAgregarTrab=="" && nuevoTrabajoCreado1==""?'':
 
 
 
-{/* (mode === "edit" || mode === "duplicar") */}
+
 
 
    <div className="drag_and_drop">

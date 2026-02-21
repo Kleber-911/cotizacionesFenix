@@ -311,7 +311,7 @@ setEncerarElegirCol(valor1)
 
 <div className='containerCampo containerCampo_cliente'>
     <h4 className='subtituloH4'>CLIENTE:</h4>
-    <input placeholder='Buscar por Id (Id=5)' value={textoInputCLIENTE} onChange={fcnInputCliente}  className='input_agregaNuevoTrabajo'></input>
+    <input placeholder='Buscar por Id del Trabajo (Id=5)' value={textoInputCLIENTE} onChange={fcnInputCliente}  className='input_agregaNuevoTrabajo'></input>
     <button  onClick={()=>ejecutarModalClientes()} className='button_lupa_cliente'>🔍</button>
 </div>
 

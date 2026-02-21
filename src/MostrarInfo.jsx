@@ -146,7 +146,7 @@ function showUnit(){
 
         <div className='containerCampo containerCampo_pvp'>
           <h4 className='subtituloH4'>PVP:</h4>
-          <p onDoubleClick={showUnit}>{datos.PVP} $</p>
+          <p className='container239' title="Mostrar precio unitario"onDoubleClick={showUnit}>{datos.PVP} $</p>
         </div>
 
         <div className='containerCampo containerCampo_estado'>
