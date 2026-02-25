@@ -96,15 +96,20 @@ function fcnTamanosComunes(e){
 
 
 
-function fcninputTrabajo(e){
-let valor3=e.target.value
+function fcninputTrabajo(e) {
+  let valor3 = e.target.value;
+
+  // Eliminar todo lo que NO sea letras o números
+  valor3 = valor3.replace(/[^a-zA-Z0-9]/g, '');
+
+  // Capitalizar primera letra
   if (valor3.length > 0) {
     valor3 = valor3.charAt(0).toUpperCase() + valor3.slice(1);
   }
-setinputTrabajo(valor3)
 
-
+  setinputTrabajo(valor3);
 }
+
 
 
 

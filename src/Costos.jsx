@@ -44,7 +44,14 @@ export const Costos = ({
   // }, [listaFinalGastos])
   // ✅ Efecto inicial para cargar gastos cuando se edita/duplica
   useEffect(() => {
-  console.log(`holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`)
+  
+
+
+
+
+
+
+
 
 // console.log(modoCrEdDu)
     if (modoCrEdDu=="edit"||modoCrEdDu=="duplicar") {
@@ -101,40 +108,6 @@ const costosIndependientes = costosParaEditar
     }
     console.log(tablaGodGastos)
   }, [listaFinalGastos])
-// console.log(costosFinales)
-//-----
-// useEffect(() => {
-//   console.log(`pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp`)
-//   if (listaFinalGastos[0] !== 0) {
-
-//     setmostrarGastos(listaFinalGastos[0]);
-//     console.log(listaFinalGastos[0]);
-//     settablaGodGastos(listaFinalGastos[0]);
-
-//   }
-// }, [listaFinalGastos]);
-//--------
-// useEffect(() => {
-//   console.log("Modo actual:", modoCrEdDu);
-
-//   if (modoCrEdDu === "edit" || modoCrEdDu === "duplicar") {
-//     if (!costosParaEditar || costosParaEditar.length === 0) return;
-
-//     setmostrarGastos(costosParaEditar);
-//     settablaGodGastos(costosParaEditar);
-
-//     const psg = costosParaEditar.find(item => item.Nombre === "PSG");
-//     const ganancia = costosParaEditar.find(item => item.Nombre === "Ganancia");
-//     const pvp = costosParaEditar.find(item => item.Nombre === "PVP");
-
-//     setSumaCostosFinales(psg?.Costo || 0);
-//     setvalorGananciaMostrar(ganancia?.Costo || 0);
-//     setvalorPVPMostrar(pvp?.Costo || 0);
-//   } 
-//   else if(listaFinalGastos && listaFinalGastos[0] && listaFinalGastos[0] !== 0) {
-//     setmostrarGastos(listaFinalGastos[0]);
-//     settablaGodGastos(listaFinalGastos[0]);
-//   }
 
 // }, [modoCrEdDu, costosParaEditar, listaFinalGastos]);
 
@@ -154,7 +127,7 @@ const costosIndependientes = costosParaEditar
 
   // ✅ Agregar un nuevo gasto a la tabla cuando llega `displayData`
   useEffect(() => {
-    console.log(`wiiiiiiiiiinnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn`)
+    // console.log(`wiiiiiiiiiinnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn`)
     if (displayData === '') return
     const trabajoID = listaFinalGastos?.[0]?.[0]?.TrabajoID || 0
  
@@ -200,15 +173,6 @@ const costosIndependientes = costosParaEditar
 
   }
 
-// function Info1(data){
-//   console.log(componentes)
-//   console.log(data[1]-1)
-//  setIDdeComponentes(data[1])
-//   setDisplayData(data[0])
- 
- 
-//   setComponentes(componentes.filter(comp => comp.id !== data[1]));
-// }
 
 
 
@@ -218,15 +182,19 @@ const costosIndependientes = costosParaEditar
 
  function eraseId(index) {
   // 1️⃣ Filtrar los arrays eliminando el índice seleccionado
+ 
   const nuevosGastos = mostrarGastos.filter((_, i) => i !== index);
   const nuevosCostos = costosFinales.filter((_, i) => i !== index);
   const nuevaTabla = tablaGodGastos.filter((_, i) => i !== index);
-
+  console.log(nuevosGastos)
+  console.log(nuevosCostos)
   // 2️⃣ Calcular total solo con los costos válidos
   const total = parseFloat(
     nuevosCostos.reduce((a, b) => a + (Number(b.Costo || b) || 0), 0).toFixed(2)
   );
 let total2=total
+
+
   // 3️⃣ Actualizar estados principales
   setmostrarGastos(nuevosGastos);
   setCostosFinales(nuevosCostos);
@@ -257,32 +225,12 @@ let total2=total
 
 settablaGodGastos(base);
 
-
-
-
-
-    // settablaGodGastos(prev => {
-    //   let base = prev.filter(item => !['PSG', 'Ganancia', 'PVP'].includes(item.Nombre))
-
-    //   base = base.map((item, index) =>
-    //     index === dinero[1]
-    //       ? { ...item, dinero: parseFloat(Number(dinero[0]).toFixed(2)) }
-    //       : item
-    //   )
-
-    //   base.push(
-    //     { TrabajoID: trabajoID, Nombre: 'PSG', dinero: total },
-    //     { TrabajoID: trabajoID, Nombre: 'Ganancia', dinero: ganancia },
-    //     { TrabajoID: trabajoID, Nombre: 'PVP', dinero: suma }
-    //   )
-
-    //   return base
-    // })
-
-
-
-
 }
+
+
+
+
+
 
 
 
@@ -294,7 +242,9 @@ console.log(tablaGodGastos)
 
 
   function Info2(dinero) {
-    
+    console.log(dinero)
+
+
     const nuevos = [...costosFinales]
     nuevos[dinero[1]] = parseFloat(Number(dinero[0]).toFixed(2))
 
@@ -312,9 +262,16 @@ console.log(total)
     const trabajoID = listaFinalGastos?.[0]?.[0]?.TrabajoID
     if (!trabajoID) return
 
+
+
+
+
+
+
+
     settablaGodGastos(prev => {
       let base = prev.filter(item => !['PSG', 'Ganancia', 'PVP'].includes(item.Nombre))
-
+console.log(base)
       base = base.map((item, index) =>
         index === dinero[1]
           ? { ...item, dinero: parseFloat(Number(dinero[0]).toFixed(2)) }
@@ -326,7 +283,7 @@ console.log(total)
         { TrabajoID: trabajoID, Nombre: 'Ganancia', dinero: ganancia },
         { TrabajoID: trabajoID, Nombre: 'PVP', dinero: suma }
       )
-
+console.log(base)
       return base
     })
   }
@@ -401,6 +358,25 @@ console.log(mostrarGastos)
 console.log(costosFinales)
 let ultimoIndex = -1;
 console.log(ultimoIndex)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // ----------------- RENDER -------------------
   return (
     <div className='container_costos'>
@@ -409,6 +385,7 @@ console.log(ultimoIndex)
    
 
 mostrarGastos.map((comp, index) => {
+  console.log(comp)
   if (comp.Nombre === "PVP" || comp.Nombre === "PSG" || comp.Nombre === "Ganancia") {
     return null; // no renderiza nada para esos
   }
