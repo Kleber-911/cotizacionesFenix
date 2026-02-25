@@ -1,21 +1,20 @@
-import React, { useState } from 'react'
-
+import React from 'react'
 import './costos.scss'
 
+export const Costos_Hijo = ({
+  visual,
+  id,
+  handleDolares,
+  handleId,
+  ttabindex,
+  valordinero
+}) => {
 
-export const Costos_Hijo = ({visual,id,handleDolares,handleId,ttabindex,valordinero}) => {
-
-if (valordinero === undefined) {
-  valordinero = "";
-}
-
-
-
-const[valorGasto,setvalorGasto]=useState(valordinero)
-
+  // Si viene undefined (modo crear), lo convertimos en string vacío
+  const valorSeguro = valordinero ?? "";
 
   function escribir(e) {
-     let tempValue = e.target.value;
+    let tempValue = e.target.value;
 
     // Cambiar comas a puntos
     tempValue = tempValue.replace(/,/g, ".");
@@ -35,24 +34,32 @@ const[valorGasto,setvalorGasto]=useState(valordinero)
       tempValue = partes.join(".");
     }
 
-    setvalorGasto(tempValue);
+    // Enviar al padre (el padre actualiza el estado)
     handleDolares([tempValue, id]);
   }
 
-
-
-
-
-function eraseWithId(){
-    handleId(id)
-   
-}
+  function eraseWithId() {
+    handleId(id);
+  }
 
   return (
+    <div title={visual} className='costos_item'>
+      <p>{visual}</p>
 
-            <div title={visual}className='costos_item'> <p>{visual}</p>   <div className='containerDatos'> 
-             <input tabIndex={ttabindex+1} value={valorGasto} onChange={escribir}className='input_costos' type="text" /><span>$</span> </div>
-             <button onClick={eraseWithId}className='btn_costos'>❌</button></div>
+      <div className='containerDatos'>
+        <input
+          tabIndex={ttabindex + 1}
+          value={valorSeguro}
+          onChange={escribir}
+          className='input_costos'
+          type="text"
+        />
+        <span>$</span>
+      </div>
 
-  )
-}
+      <button onClick={eraseWithId} className='btn_costos'>
+        ❌
+      </button>
+    </div>
+  );
+};

@@ -241,52 +241,62 @@ console.log(tablaGodGastos)
 
 
 
-  function Info2(dinero) {
-    console.log(dinero)
+ function Info2(dinero) {
+  const index = dinero[1];
+  const valorSeguro = Number(dinero[0]) || 0;
 
 
-    const nuevos = [...costosFinales]
-    nuevos[dinero[1]] = parseFloat(Number(dinero[0]).toFixed(2))
+  // 🔥 Creamos copia asegurando que no haya undefined
+  const nuevos = [...costosFinales];
 
-    const total = parseFloat(
-      nuevos.reduce((a, b) => a + (Number(b) || 0), 0).toFixed(2)
-    )
-console.log(total)
-    const ganancia = isNaN(inputGanacia) ? 0 : parseFloat(inputGanacia.toFixed(2))
-    const suma = parseFloat((total + ganancia).toFixed(2))
-
-    setCostosFinales(nuevos)
-    setSumaCostosFinales(total)
-    setvalorPVPMostrar(suma)
-
-    const trabajoID = listaFinalGastos?.[0]?.[0]?.TrabajoID
-    if (!trabajoID) return
-
-
-
-
-
-
-
-
-    settablaGodGastos(prev => {
-      let base = prev.filter(item => !['PSG', 'Ganancia', 'PVP'].includes(item.Nombre))
-console.log(base)
-      base = base.map((item, index) =>
-        index === dinero[1]
-          ? { ...item, dinero: parseFloat(Number(dinero[0]).toFixed(2)) }
-          : item
-      )
-
-      base.push(
-        { TrabajoID: trabajoID, Nombre: 'PSG', dinero: total },
-        { TrabajoID: trabajoID, Nombre: 'Ganancia', dinero: ganancia },
-        { TrabajoID: trabajoID, Nombre: 'PVP', dinero: suma }
-      )
-console.log(base)
-      return base
-    })
+  // 🔥 Si el índice no existe, rellenamos hasta esa posición con 0
+  while (nuevos.length <= index) {
+    nuevos.push(0);
   }
+
+  // 🔥 Aseguramos que todo el array sea número
+  for (let i = 0; i < nuevos.length; i++) {
+    nuevos[i] = Number(nuevos[i]) || 0;
+  }
+
+  // Guardamos el valor editado
+  nuevos[index] = Number(valorSeguro.toFixed(2));
+
+  const total = Number(
+    nuevos.reduce((a, b) => a + b, 0).toFixed(2)
+  );
+
+  const ganancia = Number(inputGanacia) || 0;
+  const suma = Number((total + ganancia).toFixed(2));
+
+  setCostosFinales(nuevos);
+  setSumaCostosFinales(total);
+  setvalorPVPMostrar(suma);
+
+  const trabajoID = listaFinalGastos?.[0]?.[0]?.TrabajoID;
+  if (!trabajoID) return;
+
+  settablaGodGastos(prev => {
+    let base = prev.filter(
+      item => !['PSG', 'Ganancia', 'PVP'].includes(item.Nombre)
+    );
+
+    base = base.map((item, i) =>
+      i === index
+        ? { ...item, dinero: nuevos[index] }
+        : item
+    );
+
+    base.push(
+      { TrabajoID: trabajoID, Nombre: 'PSG', dinero: total },
+      { TrabajoID: trabajoID, Nombre: 'Ganancia', dinero: ganancia },
+      { TrabajoID: trabajoID, Nombre: 'PVP', dinero: suma }
+    );
+
+    return base;
+  });
+}
+
 
 
 
@@ -399,7 +409,14 @@ ultimoIndex = index; // 👈 solo asignas, NO setState
       handleDolares={Info2}
       visual={comp.Nombre}
       id={index}
-      valordinero={comp.Costo}
+      // valordinero={costosFinales[index] ?? ""}
+valordinero={
+  costosFinales[index] === 0
+    ? ""
+    : costosFinales[index] ?? ""
+}
+
+
     />
   );
 })
