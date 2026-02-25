@@ -164,6 +164,7 @@ const[listaGastos,setlistaGastos]=useState([0])
 
 //para la lista de gastos segun el select trabajos 
 const getGastos=async(a)=>{
+  if (a=="") return //correccion error agregar nuevo trabajo
     try {
         
         const response=await fetch (`${API_URL}/getallgastos/`+a,{
@@ -195,28 +196,34 @@ setEncerarAgregarTrab(e.target.value)
   console.log("Elegiste:", valor);
   
 
-(async()=>{
- const TamanoYMaterial =await getMaterialesTamanos(valor)
-    const listGastos =await getGastos(valor)
-
-setOptionMaterial(TamanoYMaterial[0])
-setOptionTamano(TamanoYMaterial[1])
-
-    console.log(TamanoYMaterial[0])
-    console.log(TamanoYMaterial[1])
-
- setlistaGastos(listGastos)
 
 
+if (valor=="AgregaNuevo"){
+setOptionMaterial([])
+setOptionTamano([])
+}else{
+
+
+  (async()=>{
+   const TamanoYMaterial =await getMaterialesTamanos(valor)
+      const listGastos =await getGastos(valor)
+  
+  setOptionMaterial(TamanoYMaterial[0])
+  setOptionTamano(TamanoYMaterial[1])
+  
+  
+  
+   setlistaGastos(listGastos)
+  
+  })()
+
+
+}
 
 
 
 
-})()
-
-
-
-
+    
 
 
 
@@ -232,7 +239,8 @@ setOptionTamano(TamanoYMaterial[1])
 
 
 
-
+console.log(optionMaterial)
+    console.log(optionTamano)
 
 
 
@@ -756,7 +764,7 @@ setElevarMaterial(pap1[0])
 setseCreoNuevoMaterial(pap1[1])
 setnuevoMaterialCreado1(pap1[2])
 
-console.log(pap1)
+
 }
 
 
@@ -1127,13 +1135,26 @@ optionTrabajos.map((item)=>{
             <option value="">Elige una Opción</option>
 
 
-{
-optionTamano.map((item)=>{
+
+
+
+
+
+  //correccion error agregar nuevo trabajo
+
+
+{/* optionTamano.length > 0 && */}
+
+   {
     
-  return <option  key={item.TamanoID} value={item.TamanoID}>{item.Nombre+" "+item.Medida}</option> ;
-  
-})
-}
+    optionTamano.map((item) => (
+      <option key={item.TamanoID} value={item.TamanoID}>
+        {item.Nombre} {item.Medida}
+        
+      </option>
+    ))
+  }
+
 
 
    { elevarTamano !=""    &&    <option key={elevarTamano} value={elevarTamano} > {elevarTamano}</option>}
@@ -1174,7 +1195,7 @@ optionTamano.map((item)=>{
       <select value ={elevarMaterial !=""?elevarMaterial:encerarAgregarPap}  onChange={elegirPapel} className={`input_agregaNuevoTrabajo_peq select_agregaNuevoTrabajo_peq ${encerarAgregarPap?'opcionElegida':'' }`}>
             <option  className='options_agregaNuevoTrabajo' value="">Elige Material</option>
 
-
+{/* optionTamano.length > 0 && */}
 {
 optionMaterial.map((item)=>{
     
