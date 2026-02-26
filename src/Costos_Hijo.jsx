@@ -12,31 +12,35 @@ export const Costos_Hijo = ({
 
   // Si viene undefined (modo crear), lo convertimos en string vacío
   const valorSeguro = valordinero ?? "";
+function escribir(e) {
+  let tempValue = e.target.value;
 
-  function escribir(e) {
-    let tempValue = e.target.value;
+  // 1️⃣ Cambiar comas por puntos
+  tempValue = tempValue.replace(/,/g, ".");
 
-    // Cambiar comas a puntos
-    tempValue = tempValue.replace(/,/g, ".");
+  // 2️⃣ Eliminar todo lo que no sea número o punto
+  tempValue = tempValue.replace(/[^0-9.]/g, "");
 
-    // Eliminar caracteres no numéricos excepto punto
-    tempValue = tempValue.replace(/[^0-9.]/g, "");
-
-    // Asegurar solo un punto decimal
-    const partes = tempValue.split(".");
-    if (partes.length > 2) {
-      tempValue = partes[0] + "." + partes.slice(1).join("");
-    }
-
-    // Limitar a 2 decimales
-    if (partes[1]) {
-      partes[1] = partes[1].slice(0, 2);
-      tempValue = partes.join(".");
-    }
-
-    // Enviar al padre (el padre actualiza el estado)
-    handleDolares([tempValue, id]);
+  // 3️⃣ Permitir solo un punto
+  const primerPunto = tempValue.indexOf(".");
+  if (primerPunto !== -1) {
+    // Mantener solo el primer punto
+    tempValue =
+      tempValue.substring(0, primerPunto + 1) +
+      tempValue.substring(primerPunto + 1).replace(/\./g, "");
   }
+
+  // 4️⃣ Limitar a 2 decimales
+  const partes = tempValue.split(".");
+  if (partes[1]) {
+    partes[1] = partes[1].slice(0, 2);
+    tempValue = partes.join(".");
+  }
+
+  // 5️⃣ Enviar al padre
+  handleDolares([tempValue, id]);
+}
+
 
   function eraseWithId() {
     handleId(id);

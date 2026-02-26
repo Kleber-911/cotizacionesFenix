@@ -240,35 +240,25 @@ console.log(tablaGodGastos)
 
 
 
+function Info2(dinero) {
 
- function Info2(dinero) {
-  const index = dinero[1];
-  const valorSeguro = Number(dinero[0]) || 0;
+  const [valorString, index] = dinero;
 
-
-  // 🔥 Creamos copia asegurando que no haya undefined
+  // 1️⃣ Copiamos el array
   const nuevos = [...costosFinales];
 
-  // 🔥 Si el índice no existe, rellenamos hasta esa posición con 0
-  while (nuevos.length <= index) {
-    nuevos.push(0);
-  }
+  // 2️⃣ Guardamos STRING (no número)
+  nuevos[index] = valorString;
 
-  // 🔥 Aseguramos que todo el array sea número
-  for (let i = 0; i < nuevos.length; i++) {
-    nuevos[i] = Number(nuevos[i]) || 0;
-  }
-
-  // Guardamos el valor editado
-  nuevos[index] = Number(valorSeguro.toFixed(2));
-
-  const total = Number(
-    nuevos.reduce((a, b) => a + b, 0).toFixed(2)
+  // 3️⃣ Calculamos total convirtiendo a número SOLO aquí
+  const total = parseFloat(
+    nuevos.reduce((acc, val) => acc + (Number(val) || 0), 0).toFixed(2)
   );
 
   const ganancia = Number(inputGanacia) || 0;
-  const suma = Number((total + ganancia).toFixed(2));
+  const suma = parseFloat((total + ganancia).toFixed(2));
 
+  // 4️⃣ Actualizamos estados
   setCostosFinales(nuevos);
   setSumaCostosFinales(total);
   setvalorPVPMostrar(suma);
@@ -276,14 +266,16 @@ console.log(tablaGodGastos)
   const trabajoID = listaFinalGastos?.[0]?.[0]?.TrabajoID;
   if (!trabajoID) return;
 
+  // 5️⃣ Actualizar tabla backend (convertimos a número aquí)
   settablaGodGastos(prev => {
-    let base = prev.filter(
-      item => !['PSG', 'Ganancia', 'PVP'].includes(item.Nombre)
+
+    let base = prev.filter(item => 
+      !['PSG', 'Ganancia', 'PVP'].includes(item.Nombre)
     );
 
     base = base.map((item, i) =>
       i === index
-        ? { ...item, dinero: nuevos[index] }
+        ? { ...item, dinero: Number(valorString) || 0 }
         : item
     );
 
@@ -295,7 +287,9 @@ console.log(tablaGodGastos)
 
     return base;
   });
+
 }
+
 
 
 
