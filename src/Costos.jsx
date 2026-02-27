@@ -179,21 +179,19 @@ const costosIndependientes = costosParaEditar
 
 
 
-
- function eraseId(index) {
-  // 1️⃣ Filtrar los arrays eliminando el índice seleccionado
- 
+function eraseId(index) {
+  // 1️⃣ Eliminar el índice seleccionado sin dejar huecos
   const nuevosGastos = mostrarGastos.filter((_, i) => i !== index);
   const nuevosCostos = costosFinales.filter((_, i) => i !== index);
   const nuevaTabla = tablaGodGastos.filter((_, i) => i !== index);
-  console.log(nuevosGastos)
-  console.log(nuevosCostos)
-  // 2️⃣ Calcular total solo con los costos válidos
-  const total = parseFloat(
-    nuevosCostos.reduce((a, b) => a + (Number(b.Costo || b) || 0), 0).toFixed(2)
-  );
-let total2=total
 
+  // 2️⃣ Calcular total (costosFinales ahora es array de strings)
+  const total = Number(
+    nuevosCostos
+      .filter(val => val !== undefined && val !== null)
+      .reduce((acc, val) => acc + (Number(val) || 0), 0)
+      .toFixed(2)
+  );
 
   // 3️⃣ Actualizar estados principales
   setmostrarGastos(nuevosGastos);
@@ -203,28 +201,27 @@ let total2=total
   // 4️⃣ Calcular ganancia y PVP
   const ganancia = isNaN(Number(inputGanacia))
     ? 0
-    : parseFloat(Number(inputGanacia).toFixed(2));
+    : Number(Number(inputGanacia).toFixed(2));
 
-  const suma = parseFloat((total + ganancia).toFixed(2));
+  const suma = Number((total + ganancia).toFixed(2));
   setvalorPVPMostrar(suma);
 
-  // 5️⃣ Actualizar tablaGodGastos (solo los campos PSG y PVP)
-
-
+  // 5️⃣ Actualizar tablaGodGastos (PSG, Ganancia y PVP)
   const trabajoID = listaFinalGastos?.[0]?.[0]?.TrabajoID;
+
   const base = nuevaTabla.map((item) => {
+    if (!item) return item;
+
     if (trabajoID && item.TrabajoID !== trabajoID) return item;
 
-    if (item.Nombre === "PSG") return { ...item, dinero: total2 };
-    if (item.Nombre === "Ganancia") return { ...item, dinero: ganancia };///add al final 
+    if (item.Nombre === "PSG") return { ...item, dinero: total };
+    if (item.Nombre === "Ganancia") return { ...item, dinero: ganancia };
     if (item.Nombre === "PVP") return { ...item, dinero: suma };
 
     return item;
   });
 
-
-settablaGodGastos(base);
-
+  settablaGodGastos(base);
 }
 
 
@@ -403,12 +400,8 @@ ultimoIndex = index; // 👈 solo asignas, NO setState
       handleDolares={Info2}
       visual={comp.Nombre}
       id={index}
-      // valordinero={costosFinales[index] ?? ""}
-valordinero={
-  costosFinales[index] === 0
-    ? ""
-    : costosFinales[index] ?? ""
-}
+      valordinero={costosFinales[index] ?? ""}
+
 
 
     />
