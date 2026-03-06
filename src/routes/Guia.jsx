@@ -256,7 +256,9 @@ Si damos doble-click en el PVP, nos va a salir una ventana con el precio unitari
 <p className='parr2a'>Hechos por nosotros con corte laser, </p>
 <br/><br/>
 
-
+<h3 className='title2a'>Empaques & Cajas</h3>
+<p className='parr2a'>Empaques de Comida, papel encerado, cajas de carton , empaque para hot dogs, todo lo que es cajas o empaques de comida </p>
+<br/><br/>
 
 
     </div>

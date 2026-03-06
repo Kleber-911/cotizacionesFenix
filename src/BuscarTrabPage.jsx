@@ -238,6 +238,7 @@ const enviarDatosBusqueda = async () => {
     };
 
     console.log("Datos a enviar:", datos);
+localStorage.setItem("busquedaTrabajos", JSON.stringify(datos));
 
     // 3️⃣ Enviar todo al backend
     const res = await fetch(`${API_URL}/searchtrabajos`, {
@@ -434,7 +435,7 @@ optionTamano */}
 
 <div className='containerCampo containerCampo_colores'>
     <h4 className='subtituloH4'>COLORES:</h4>
-      <select vvalue ={encerarElegirCol}onChange={elegirColores} className='input_agregaNuevoTrabajo_peq select_agregaNuevoTrabajo_peq'>
+      <select value ={encerarElegirCol}onChange={elegirColores} className='input_agregaNuevoTrabajo_peq select_agregaNuevoTrabajo_peq'>
             <option  className='options_agregaNuevoTrabajo' value="All">All</option>
             <option  className='options_agregaNuevoTrabajo' value="Full Color">Full Color</option>
             <option  className='options_agregaNuevoTrabajo' value="Un color">Un color</option>
