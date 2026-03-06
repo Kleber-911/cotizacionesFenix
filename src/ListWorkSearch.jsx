@@ -42,9 +42,15 @@ function showSize(siz1,siz2){
       <div className="wl-info">{pvp}</div>
       <div className="wl-info">
 
-      <NavLink to="/mostrartrabajo" state={{ datos: arrayTrabajo }}>
-       Ir
-      </NavLink>
+<NavLink
+  to="/mostrartrabajo"
+  state={{ datos: arrayTrabajo }}
+  onClick={() => {
+    sessionStorage.setItem("scrollBusqueda", window.scrollY);
+  }}
+>
+  Ir
+</NavLink>
 
 
 

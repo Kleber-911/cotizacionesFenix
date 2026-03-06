@@ -35,26 +35,60 @@ const[optionTamano,setoptionTamano]=useState([])
 
 
 useEffect(() => {
-  
+
 (async()=>{
- const trabajos =await getTrabajos()
- const tamanos =await gettamanos()
- const materiales =await getmateriales()
 
+ const trabajos = await getTrabajos()
+ const tamanos = await gettamanos()
+ const materiales = await getmateriales()
 
-    // console.log(trabajos[1].Nombre)
-
-
-
-    setOptionTrabajos(trabajos)
-
-    setoptionMaterial(materiales)
-    setoptionTamano(tamanos)
-
-
+ setOptionTrabajos(trabajos)
+ setoptionMaterial(materiales)
+ setoptionTamano(tamanos)
 
 })()
 
+// restaurar filtros
+const filtrosGuardados = JSON.parse(
+  sessionStorage.getItem("filtrosBusqueda") || "null"
+)
+
+if (filtrosGuardados) {
+
+  setTextoInputCLIENTE(filtrosGuardados.s_Cliente || "")
+  setTextoInputKEYW(filtrosGuardados.s_Keywords || "")
+  settextoInputCANTIDAD(filtrosGuardados.s_Cantidad || "")
+  settextoInputPVP(filtrosGuardados.s_PVP || "")
+  settextoInputTrabajo(filtrosGuardados.s_Trabajo || "")
+  settextoInputTamano(filtrosGuardados.s_Tamano || "")
+  settextoInputMaterial(filtrosGuardados.s_Material || "")
+  setfechaAnterior(filtrosGuardados.s_FechaAnterior || "")
+  setFechaHoy(filtrosGuardados.s_Fecha || hoy)
+  setEncerarElegirCol(filtrosGuardados.s_Colores || "All")
+  setEstadoRadio(filtrosGuardados.s_Estado || "")
+
+}
+
+// restaurar resultados
+const resultadosGuardados = JSON.parse(
+  sessionStorage.getItem("resultadosBusqueda") || "null"
+)
+
+if (resultadosGuardados) {
+
+  setbusquedaTrabajos(resultadosGuardados)
+  handleBussqueda(resultadosGuardados)
+
+}
+
+// restaurar scroll
+const scrollGuardado = sessionStorage.getItem("scrollBusqueda")
+
+if (scrollGuardado) {
+  setTimeout(() => {
+    window.scrollTo(0, Number(scrollGuardado))
+  }, 100)
+}
 
 }, [])
 
@@ -244,7 +278,7 @@ const [encerarElegirCol, setEncerarElegirCol] = useState(datosGuardados.s_Colore
 
 
 
-const enviarDatosBusqueda = async () => {
+const enviarDatosBusqueda = async (datosExternos = null) => {
   try {
   
     // 2️⃣ Preparar los datos del pedido con la URL incluida
@@ -282,6 +316,11 @@ sessionStorage.setItem("busquedaTrabajos", JSON.stringify(datos));
       setbusquedaTrabajos(respuesta)
       handleBussqueda(respuesta)
       console.log("Respuesta del backend:", respuesta);
+        // guardar resultados
+  sessionStorage.setItem("resultadosBusqueda", JSON.stringify(respuesta))
+
+  // guardar filtros actuales
+  sessionStorage.setItem("filtrosBusqueda", JSON.stringify(datos))
     } else {
       // alert("❌ Error al guardar los datos");
     }
