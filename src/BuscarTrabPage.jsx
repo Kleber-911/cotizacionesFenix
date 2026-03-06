@@ -36,62 +36,77 @@ const[optionTamano,setoptionTamano]=useState([])
 
 useEffect(() => {
 
-(async()=>{
+  // limpiar si la página se recarga
+  const limpiarBusqueda = () => {
+    sessionStorage.removeItem("filtrosBusqueda")
+    sessionStorage.removeItem("resultadosBusqueda")
+    sessionStorage.removeItem("scrollBusqueda")
+  }
 
- const trabajos = await getTrabajos()
- const tamanos = await gettamanos()
- const materiales = await getmateriales()
+  window.addEventListener("beforeunload", limpiarBusqueda)
 
- setOptionTrabajos(trabajos)
- setoptionMaterial(materiales)
- setoptionTamano(tamanos)
+  // cargar combos
+  ;(async () => {
 
-})()
+    const trabajos = await getTrabajos()
+    const tamanos = await gettamanos()
+    const materiales = await getmateriales()
 
-// restaurar filtros
-const filtrosGuardados = JSON.parse(
-  sessionStorage.getItem("filtrosBusqueda") || "null"
-)
+    setOptionTrabajos(trabajos)
+    setoptionMaterial(materiales)
+    setoptionTamano(tamanos)
 
-if (filtrosGuardados) {
+  })()
 
-  setTextoInputCLIENTE(filtrosGuardados.s_Cliente || "")
-  setTextoInputKEYW(filtrosGuardados.s_Keywords || "")
-  settextoInputCANTIDAD(filtrosGuardados.s_Cantidad || "")
-  settextoInputPVP(filtrosGuardados.s_PVP || "")
-  settextoInputTrabajo(filtrosGuardados.s_Trabajo || "")
-  settextoInputTamano(filtrosGuardados.s_Tamano || "")
-  settextoInputMaterial(filtrosGuardados.s_Material || "")
-  setfechaAnterior(filtrosGuardados.s_FechaAnterior || "")
-  setFechaHoy(filtrosGuardados.s_Fecha || hoy)
-  setEncerarElegirCol(filtrosGuardados.s_Colores || "All")
-  setEstadoRadio(filtrosGuardados.s_Estado || "")
+  // restaurar filtros
+  const filtrosGuardados = JSON.parse(
+    sessionStorage.getItem("filtrosBusqueda") || "null"
+  )
 
-}
+  if (filtrosGuardados) {
 
-// restaurar resultados
-const resultadosGuardados = JSON.parse(
-  sessionStorage.getItem("resultadosBusqueda") || "null"
-)
+    setTextoInputCLIENTE(filtrosGuardados.s_Cliente || "")
+    setTextoInputKEYW(filtrosGuardados.s_Keywords || "")
+    settextoInputCANTIDAD(filtrosGuardados.s_Cantidad || "")
+    settextoInputPVP(filtrosGuardados.s_PVP || "")
+    settextoInputTrabajo(filtrosGuardados.s_Trabajo || "")
+    settextoInputTamano(filtrosGuardados.s_Tamano || "")
+    settextoInputMaterial(filtrosGuardados.s_Material || "")
+    setfechaAnterior(filtrosGuardados.s_FechaAnterior || "")
+    setFechaHoy(filtrosGuardados.s_Fecha || hoy)
+    setEncerarElegirCol(filtrosGuardados.s_Colores || "All")
+    setEstadoRadio(filtrosGuardados.s_Estado || "")
 
-if (resultadosGuardados) {
+  }
 
-  setbusquedaTrabajos(resultadosGuardados)
-  handleBussqueda(resultadosGuardados)
+  // restaurar resultados
+  const resultadosGuardados = JSON.parse(
+    sessionStorage.getItem("resultadosBusqueda") || "null"
+  )
 
-}
+  if (resultadosGuardados) {
 
-// restaurar scroll
-const scrollGuardado = sessionStorage.getItem("scrollBusqueda")
+    setbusquedaTrabajos(resultadosGuardados)
+    handleBussqueda(resultadosGuardados)
 
-if (scrollGuardado) {
-  setTimeout(() => {
-    window.scrollTo(0, Number(scrollGuardado))
-  }, 100)
-}
+  }
+
+  // restaurar scroll
+  const scrollGuardado = sessionStorage.getItem("scrollBusqueda")
+
+  if (scrollGuardado) {
+
+    setTimeout(() => {
+      window.scrollTo(0, Number(scrollGuardado))
+    }, 100)
+
+  }
+
+  return () => {
+    window.removeEventListener("beforeunload", limpiarBusqueda)
+  }
 
 }, [])
-
 
 const getTrabajos=async()=>{
     try {
