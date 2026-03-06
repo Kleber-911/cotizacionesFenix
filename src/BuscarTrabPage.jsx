@@ -8,8 +8,14 @@ import API_URL from "./api";
 export const BuscarTrabPage = ({handleBussqueda}) => {
 
 
- const [textoInputCLIENTE, setTextoInputCLIENTE] = useState("");
- const [textoInputKEYW, setTextoInputKEYW] = useState("");
+const datosGuardados = JSON.parse(sessionStorage.getItem("busquedaTrabajos") || "{}");
+
+
+const [textoInputCLIENTE, setTextoInputCLIENTE] = useState(datosGuardados.s_Cliente || "");
+const [textoInputKEYW, setTextoInputKEYW] = useState(datosGuardados.s_Keywords || "");
+
+
+
 const[clienteDesdeModal,setClienteDesdeModal]=useState("")
 const [modalClientes, setmodalClientes] = useState(false);
 const [modalKeyW, setmodalKeyW] = useState(false);
@@ -197,7 +203,7 @@ function executeFechaAnterior(e){
 
 
 //obtencion radio input
-const [estadoRadio, setEstadoRadio] = useState("");
+const [estadoRadio, setEstadoRadio] = useState(datosGuardados.s_Estado || "");
   const estadoTrabajoFunc = (e) => {
     setEstadoRadio(e.target.value);
 
@@ -206,14 +212,36 @@ const [estadoRadio, setEstadoRadio] = useState("");
 
 //enviar datos del front al back para filtrar trabajos
 
-const[textoInputCANTIDAD,settextoInputCANTIDAD]=useState("")
-const[textoInputPVP,settextoInputPVP]=useState("")
-const[textoInputTrabajo,settextoInputTrabajo]=useState("")
-const[textoInputTamano,settextoInputTamano]=useState("")
-const[textoInputMaterial,settextoInputMaterial]=useState("")
-const[encerarElegirCol,setEncerarElegirCol]=useState("All")
+
+
+
+
+
+
 
 const[busquedaTrabajos,setbusquedaTrabajos]=useState([])
+
+
+
+
+
+const [textoInputCANTIDAD, settextoInputCANTIDAD] = useState(datosGuardados.s_Cantidad || "");
+const [textoInputPVP, settextoInputPVP] = useState(datosGuardados.s_PVP || "");
+const [textoInputTrabajo, settextoInputTrabajo] = useState(datosGuardados.s_Trabajo || "");
+const [textoInputTamano, settextoInputTamano] = useState(datosGuardados.s_Tamano || "");
+const [textoInputMaterial, settextoInputMaterial] = useState(datosGuardados.s_Material || "");
+const [encerarElegirCol, setEncerarElegirCol] = useState(datosGuardados.s_Colores || "All");
+
+
+
+
+
+
+
+
+
+
+
 
 
 const enviarDatosBusqueda = async () => {
@@ -238,7 +266,7 @@ const enviarDatosBusqueda = async () => {
     };
 
     console.log("Datos a enviar:", datos);
-localStorage.setItem("busquedaTrabajos", JSON.stringify(datos));
+sessionStorage.setItem("busquedaTrabajos", JSON.stringify(datos));
 
     // 3️⃣ Enviar todo al backend
     const res = await fetch(`${API_URL}/searchtrabajos`, {
